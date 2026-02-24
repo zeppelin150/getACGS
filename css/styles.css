@@ -84,12 +84,33 @@ p { line-height: 1.7; margin: 0 0 12px; }
 .hero-content h1 { color: var(--text-bright); margin-bottom: 20px; }
 .hero-content .lead { margin: 0 auto 28px; }
 
-/* Neptune — Canvas renderer */
-.planet-container { position: relative; width: 100%; display: flex; justify-content: center; margin-top: 40px; z-index: 1; }
-#neptune-canvas {
-  width: clamp(600px, 80vw, 1100px);
-  height: clamp(600px, 80vw, 1100px);
-  transform: translateY(30%);
+/* Neptune — Real image, rising from bottom of hero */
+.planet-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  pointer-events: none;
+}
+#neptune-img {
+  --planet-scale: 1;
+  --planet-tx: 0px;
+  --planet-ty: 0px;
+  display: block;
+  width: clamp(480px, 55vw, 820px);
+  height: auto;
+  transform: translateY(55%) scale(var(--planet-scale)) translate(var(--planet-tx), var(--planet-ty));
+  filter: drop-shadow(0 0 80px rgba(60, 100, 230, 0.35)) drop-shadow(0 0 160px rgba(80, 130, 255, 0.18));
+  animation: planet-float 8s ease-in-out infinite;
+  will-change: transform;
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes planet-float {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: -10px; }
 }
 
 .hero-gradient-fade {
@@ -201,6 +222,21 @@ p { line-height: 1.7; margin: 0 0 12px; }
 .cap-item h3 { color: var(--text-bright); margin-bottom: 8px; }
 .cap-item p { color: var(--muted); font-size: .95rem; }
 @media (max-width: 900px) { .cap-grid { grid-template-columns: 1fr; } }
+
+/* Dark-zone capabilities — hero-style typography */
+.capabilities-dark { background: var(--bg); border-top: none; }
+.capabilities-dark .cap-grid { gap: 48px; }
+.capabilities-dark .cap-item h3 {
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  letter-spacing: -0.03em;
+  color: #e0e4ff;
+  margin-bottom: 12px;
+}
+.capabilities-dark .cap-item p {
+  font-size: clamp(1rem, 1.2vw, 1.12rem);
+  line-height: 1.7;
+  color: #565f89;
+}
 
 /* === CTA BOTTOM === */
 .cta-bottom { text-align: center; border-top: 1px solid color-mix(in oklab, var(--text) 6%, transparent); }
