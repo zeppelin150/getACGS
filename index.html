@@ -20,6 +20,7 @@
   <script defer src="js/constants.js"></script>
   <script defer src="js/components.js"></script>
   <script defer src="js/main.js"></script>
+  <script defer src="js/planet.js"></script>
 </head>
 <body data-page="home">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -65,15 +66,17 @@
     </div>
 
     <div class="planet-container">
-      <div class="planet-glow"></div>
-      <div class="planet"></div>
+      <canvas id="neptune-canvas"></canvas>
     </div>
 
     <div class="hero-gradient-fade"></div>
   </section>
 
-  <!-- PRODUCTS -->
-  <main id="main">
+  <!-- Umbra: dark → parchment -->
+  <div class="umbra-to-light"></div>
+
+  <!-- MAIN CONTENT — Parchment zone -->
+  <main id="main" class="light-content">
     <section class="products-section section-pad">
       <div class="container">
         <header class="section-head">
@@ -134,6 +137,9 @@
       </div>
     </section>
   </main>
+
+  <!-- Umbra: parchment → dark -->
+  <div class="umbra-to-dark"></div>
 
   <footer class="site-footer">
     <div class="container footer-grid">

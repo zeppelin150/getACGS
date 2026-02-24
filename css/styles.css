@@ -1,6 +1,6 @@
-/* /css/styles.css — Cambric AI — Tokyo Night */
+/* /css/styles.css — Cambric AI — Tokyo Night + Parchment */
 
-/* === TOKYO NIGHT PALETTE === */
+/* === TOKYO NIGHT PALETTE (dark zones: header, hero, footer) === */
 :root {
   --bg:        #1a1b26;
   --bg-dark:   #16161e;
@@ -23,6 +23,17 @@
   --radius-sm: 10px;
   --shadow:    0 18px 50px rgba(0,0,0,.4);
   --max-w:     1200px;
+
+  /* Parchment palette (used in light-content zones) */
+  --parchment:       #f0ebe1;
+  --parchment-panel: #ffffff;
+  --parchment-input: #faf8f4;
+  --parchment-text:  #3a3632;
+  --parchment-bright:#1a1815;
+  --parchment-muted: #7a756e;
+  --parchment-brand: #8b6cc7;
+  --parchment-accent:#4a7ae0;
+  --parchment-green: #4a8a3a;
 }
 
 /* === RESET & BASE === */
@@ -73,51 +84,14 @@ p { line-height: 1.7; margin: 0 0 12px; }
 .hero-content h1 { color: var(--text-bright); margin-bottom: 20px; }
 .hero-content .lead { margin: 0 auto 28px; }
 
-/* Neptune planet — pure CSS */
+/* Neptune — Canvas renderer */
 .planet-container { position: relative; width: 100%; display: flex; justify-content: center; margin-top: 40px; z-index: 1; }
-.planet { width: clamp(500px, 70vw, 900px); height: clamp(500px, 70vw, 900px); border-radius: 50%; position: relative; background: radial-gradient(circle at 35% 30%, #4a6cf7, #2d3a8c 30%, #1a2266 55%, #0d1440 80%, #070a24);
-  box-shadow:
-    0 0 80px rgba(74, 108, 247, .15),
-    0 0 200px rgba(74, 108, 247, .08),
-    inset -30px -20px 60px rgba(0,0,0,.5),
-    inset 10px 10px 40px rgba(122, 162, 247, .1);
-  transform: translateY(35%);
-  overflow: hidden;
-}
-.planet::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background:
-    linear-gradient(170deg, transparent 20%, rgba(45, 58, 140, .3) 30%, transparent 35%,
-      rgba(74, 108, 247, .15) 42%, transparent 48%,
-      rgba(45, 58, 140, .2) 55%, transparent 60%,
-      rgba(74, 108, 247, .12) 68%, transparent 73%,
-      rgba(45, 58, 140, .15) 82%, transparent 88%);
-}
-.planet::after {
-  content: '';
-  position: absolute;
-  top: -5%;
-  left: -5%;
-  width: 110%;
-  height: 110%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 25%, rgba(122, 162, 247, .12) 0%, transparent 50%);
-}
-.planet-glow {
-  position: absolute;
+#neptune-canvas {
   width: clamp(600px, 80vw, 1100px);
   height: clamp(600px, 80vw, 1100px);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(187, 154, 247, .06) 0%, rgba(122, 162, 247, .03) 40%, transparent 70%);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -15%);
-  z-index: 0;
-  pointer-events: none;
+  transform: translateY(30%);
 }
+
 .hero-gradient-fade {
   position: absolute;
   bottom: 0;
@@ -192,7 +166,7 @@ p { line-height: 1.7; margin: 0 0 12px; }
 .announce-pill:hover .arrow { transform: translateX(2px); }
 
 /* === PRODUCTS SECTION === */
-.products-section { background: var(--bg); position: relative; z-index: 5; }
+.products-section { position: relative; z-index: 5; }
 .products-section .section-head { text-align: center; }
 .products-section .section-head p { max-width: 560px; margin: 0 auto; }
 
@@ -276,11 +250,12 @@ p { line-height: 1.7; margin: 0 0 12px; }
 .footer-meta { font-size: .85rem; }
 .footer-meta a { color: var(--muted); }
 .footer-meta a:hover { color: var(--brand); }
-.legal .container { width: min(880px, 90vw); }
+
+/* === PAGE HEADER (inner pages, stays dark) === */
+.page-header { padding: 100px 0 40px; background: var(--bg); }
+.page-header h1 { margin-bottom: 8px; }
 
 /* === RESEARCH & NEWS PAGES === */
-.page-header { padding: 100px 0 40px; border-bottom: 1px solid color-mix(in oklab, var(--text) 6%, transparent); }
-.page-header h1 { margin-bottom: 8px; }
 .entries { display: grid; gap: 0; }
 .entry { display: grid; grid-template-columns: 160px 1fr; gap: 32px; padding: 32px 0; border-bottom: 1px solid color-mix(in oklab, var(--text) 6%, transparent); align-items: start; }
 .entry-date { color: var(--muted); font-size: .88rem; padding-top: 4px; }
@@ -309,3 +284,80 @@ p { line-height: 1.7; margin: 0 0 12px; }
 /* === REVEAL ANIMATION === */
 .reveal { opacity: 0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   LIGHT CONTENT ZONE — Parchment middle area
+   CSS variable overrides cascade to all child components
+   ============================================================ */
+.light-content {
+  --bg: var(--parchment);
+  --panel: var(--parchment-panel);
+  --panel-2: var(--parchment-input);
+  --surface: #ede8de;
+  --text: var(--parchment-text);
+  --text-bright: var(--parchment-bright);
+  --muted: var(--parchment-muted);
+  --brand: var(--parchment-brand);
+  --brand-dim: #7a5cb8;
+  --accent: var(--parchment-accent);
+  --green: var(--parchment-green);
+  --cyan: #2a8cb7;
+  --shadow: 0 4px 20px rgba(0,0,0,.04), 0 12px 40px rgba(0,0,0,.03);
+  background: var(--parchment);
+  color: var(--parchment-text);
+}
+
+/* Softer shadows on light bg */
+.light-content .product-card:hover { box-shadow: 0 20px 50px rgba(0,0,0,.07); }
+.light-content .card:hover { box-shadow: 0 20px 50px rgba(0,0,0,.07); }
+.light-content .panel { box-shadow: 0 4px 20px rgba(0,0,0,.04); }
+
+/* Ghost button on light bg */
+.light-content .btn-ghost { border-color: rgba(0,0,0,.12); color: var(--parchment-text); }
+.light-content .btn-ghost:hover { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.18); color: var(--parchment-bright); }
+
+/* Primary button keeps dark text */
+.light-content .btn-primary { color: #16161e; }
+
+/* Links on light */
+.light-content a { color: var(--parchment-accent); }
+.light-content a:hover { color: var(--parchment-brand); }
+.light-content .card-link { color: var(--parchment-brand); }
+
+/* Legal pages narrow container */
+.light-content.legal-content .container { width: min(880px, 90vw); }
+
+/* ============================================================
+   UMBRA GRADIENTS — Dark ↔ Parchment transitions
+   ============================================================ */
+.umbra-to-light {
+  height: clamp(120px, 18vw, 260px);
+  background: linear-gradient(180deg,
+    #1a1b26 0%,
+    #201f2c 12%,
+    #2e2a34 24%,
+    #4a4240 38%,
+    #706660 50%,
+    #9d9388 62%,
+    #c4bbb0 75%,
+    #dfd8cd 86%,
+    #f0ebe1 100%
+  );
+  pointer-events: none;
+}
+
+.umbra-to-dark {
+  height: clamp(120px, 18vw, 260px);
+  background: linear-gradient(180deg,
+    #f0ebe1 0%,
+    #dfd8cd 14%,
+    #c4bbb0 25%,
+    #9d9388 38%,
+    #706660 50%,
+    #4a4240 62%,
+    #2e2a34 76%,
+    #201f2c 88%,
+    #1a1b26 100%
+  );
+  pointer-events: none;
+}
