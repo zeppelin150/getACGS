@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="32" viewBox="0 0 180 32">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bb9af7"/>
+      <stop offset="1" stop-color="#7aa2f7"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd" font-family="Inter, Arial, sans-serif">
+    <rect x="0" y="4" width="24" height="24" rx="6" fill="url(#lg)"/>
+    <path d="M8 20 L12 10 L16 20 M10 17 h4" stroke="#1a1b26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="32" y="22" font-size="16" font-weight="700" fill="#c0caf5" letter-spacing="-0.02em">Cambric AI</text>
+  </g>
+</svg>
