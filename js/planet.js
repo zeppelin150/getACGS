@@ -1,11 +1,13 @@
-// js/planet.js — Dramatic scroll expansion + mouse parallax for Neptune image
+// js/planet.js — Anthropic-style scroll-through: text fades, planet grows, sticky hero
 (function () {
   'use strict';
 
   var img = document.getElementById('neptune-img');
   if (!img) return;
 
+  var track = document.querySelector('.hero-track');
   var hero = document.querySelector('.hero');
+  var heroContent = document.querySelector('.hero-content');
   var targetMX = 0, targetMY = 0;
   var currentMX = 0, currentMY = 0;
   var scrollScale = 1;
@@ -20,20 +22,31 @@
   var PARALLAX_Y_BASE = 16;
   var GLOW_MIN = 0.35;
   var GLOW_MAX = 0.85;
-  var FLOAT_AMPLITUDE = 10;   // px, replaces CSS @keyframes planet-float
-  var FLOAT_PERIOD = 8000;    // ms, matches original 8s duration
+  var FLOAT_AMPLITUDE = 10;   // px
+  var FLOAT_PERIOD = 8000;    // ms
+  var TEXT_FADE_END = 0.4;    // text fully gone by 40% of scroll progress
 
-  // Scroll-driven expansion — dramatic Anthropic-style
+  // Scroll-driven expansion — uses .hero-track as the scroll runway
   window.addEventListener('scroll', function () {
-    if (!hero) return;
-    var rect = hero.getBoundingClientRect();
-    var p = Math.max(0, Math.min(1, -rect.top / (rect.height * 0.7)));
+    if (!track) return;
+    var rect = track.getBoundingClientRect();
+    var scrollRoom = rect.height - window.innerHeight;
+    if (scrollRoom <= 0) return;
+    var p = Math.max(0, Math.min(1, -rect.top / scrollRoom));
 
     // Smoothstep easing for dramatic acceleration
     var eased = p * p * (3 - 2 * p);
 
     scrollScale = MIN_SCALE + eased * (MAX_SCALE - MIN_SCALE);
     scrollProgress = p;
+
+    // Fade hero text out in first 40% of scroll
+    if (heroContent) {
+      var textOpacity = Math.max(0, 1 - (p / TEXT_FADE_END));
+      var textTranslate = Math.min(p / TEXT_FADE_END, 1) * -80;
+      heroContent.style.opacity = textOpacity;
+      heroContent.style.transform = 'translateY(' + textTranslate + 'px)';
+    }
   }, { passive: true });
 
   // Mouse parallax — reduced at larger scales
@@ -43,13 +56,13 @@
     targetMY = (e.clientY / window.innerHeight - 0.5) * PARALLAX_Y_BASE * dampening;
   });
 
-  // Pause when hero is not visible
-  if (hero && typeof IntersectionObserver !== 'undefined') {
+  // Pause when hero track is not visible
+  if (track && typeof IntersectionObserver !== 'undefined') {
     var io = new IntersectionObserver(function (entries) {
       running = entries[0].isIntersecting;
       if (running && !raf) tick();
     }, { threshold: 0 });
-    io.observe(hero);
+    io.observe(track);
   }
 
   function tick() {
@@ -59,7 +72,7 @@
     currentMX += (targetMX - currentMX) * 0.05;
     currentMY += (targetMY - currentMY) * 0.05;
 
-    // Float oscillation (replaces CSS margin-top animation to avoid layout reflow)
+    // Float oscillation
     var t = (performance.now() % FLOAT_PERIOD) / FLOAT_PERIOD;
     var floatOffset = (Math.cos(t * Math.PI * 2) - 1) * 0.5 * FLOAT_AMPLITUDE;
 

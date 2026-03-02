@@ -77,10 +77,10 @@ p { line-height: 1.7; margin: 0 0 12px; }
 .nav a.active { color: var(--brand); }
 .small { font-size: .88rem; }
 
-/* === HERO — PLANET === */
-.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background: var(--bg-dark); }
-.hero-planet-wrap { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; padding-top: 120px; }
-.hero-content { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 720px; }
+/* === HERO — PLANET (Anthropic-style scroll-through) === */
+.hero-track { position: relative; height: 200vh; background: var(--bg-dark); }
+.hero { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background: var(--bg-dark); }
+.hero-content { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 720px; will-change: transform, opacity; }
 .hero-content h1 { color: var(--text-bright); margin-bottom: 20px; }
 .hero-content .lead { margin: 0 auto 28px; }
 
@@ -100,6 +100,7 @@ p { line-height: 1.7; margin: 0 0 12px; }
   --planet-glow: 0.35;
   display: block;
   width: clamp(480px, 55vw, 820px);
+  max-width: none;
   height: auto;
   transform: translateY(55%) scale(var(--planet-scale)) translate(var(--planet-tx), var(--planet-ty));
   filter: drop-shadow(0 0 80px rgba(60, 100, 230, var(--planet-glow)))
