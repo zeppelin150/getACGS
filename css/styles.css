@@ -93,6 +93,8 @@ p { line-height: 1.7; margin: 0 0 12px; }
   transform: translateX(-50%);
   z-index: 1;
   pointer-events: none;
+  clip-path: inset(0 18% 0 18%);
+  will-change: clip-path;
 }
 #neptune-img {
   --planet-scale: 1;
