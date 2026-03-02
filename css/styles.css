@@ -79,7 +79,7 @@ p { line-height: 1.7; margin: 0 0 12px; }
 .small { font-size: .88rem; }
 
 /* === HERO — PLANET (Anthropic-style scroll-through) === */
-.hero-track { position: relative; height: 160vh; background: var(--bg-dark); }
+.hero-track { position: relative; height: 300vh; background: var(--bg-dark); }
 .hero { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background: var(--bg-dark); }
 .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 720px; will-change: transform, opacity; }
 .hero-content h1 { color: var(--text-bright); margin-bottom: 20px; }

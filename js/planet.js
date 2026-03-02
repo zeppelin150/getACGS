@@ -24,7 +24,7 @@
   var GLOW_MAX = 0.85;
   var FLOAT_AMPLITUDE = 10;   // px
   var FLOAT_PERIOD = 8000;    // ms
-  var TEXT_FADE_END = 0.35;   // text fully gone by 35% of scroll progress
+  var TEXT_FADE_END = 0.2;    // text fully gone by 20% of scroll progress
 
   // Scroll-driven expansion — uses .hero-track as the scroll runway
   window.addEventListener('scroll', function () {
@@ -34,10 +34,8 @@
     if (scrollRoom <= 0) return;
     var p = Math.max(0, Math.min(1, -rect.top / scrollRoom));
 
-    // Gentle ease-out: every scroll tick produces visible, proportional growth
-    var eased = 1 - (1 - p) * (1 - p);
-
-    scrollScale = MIN_SCALE + eased * (MAX_SCALE - MIN_SCALE);
+    // Linear mapping: equal growth per pixel scrolled, no dead zones
+    scrollScale = MIN_SCALE + p * (MAX_SCALE - MIN_SCALE);
     scrollProgress = p;
 
     // Fade hero text out in first 40% of scroll
