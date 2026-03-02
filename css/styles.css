@@ -104,15 +104,9 @@ p { line-height: 1.7; margin: 0 0 12px; }
   transform: translateY(55%) scale(var(--planet-scale)) translate(var(--planet-tx), var(--planet-ty));
   filter: drop-shadow(0 0 80px rgba(60, 100, 230, var(--planet-glow)))
           drop-shadow(0 0 160px rgba(80, 130, 255, calc(var(--planet-glow) * 0.5)));
-  animation: planet-float 8s ease-in-out infinite;
   will-change: transform, filter;
   pointer-events: none;
   user-select: none;
-}
-
-@keyframes planet-float {
-  0%, 100% { margin-top: 0; }
-  50% { margin-top: -10px; }
 }
 
 .hero-gradient-fade {
@@ -378,32 +372,48 @@ p { line-height: 1.7; margin: 0 0 12px; }
    UMBRA GRADIENTS — Dark ↔ Parchment transitions
    ============================================================ */
 .umbra-to-light {
-  height: clamp(120px, 18vw, 260px);
-  background: linear-gradient(180deg,
+  height: clamp(160px, 22vw, 340px);
+  background: linear-gradient(180deg in oklab,
     #1a1b26 0%,
-    #201f2c 12%,
-    #2e2a34 24%,
-    #4a4240 38%,
+    #1e1d2a 6%,
+    #23212f 12%,
+    #2a2633 18%,
+    #332e38 25%,
+    #3e383f 32%,
+    #4d4443 38%,
+    #5e544e 44%,
     #706660 50%,
-    #9d9388 62%,
-    #c4bbb0 75%,
-    #dfd8cd 86%,
+    #847868 56%,
+    #978a78 62%,
+    #a99c89 68%,
+    #baae9b 75%,
+    #cbc0ad 82%,
+    #dcd3c2 88%,
+    #e8e0d2 94%,
     #f0ebe1 100%
   );
   pointer-events: none;
 }
 
 .umbra-to-dark {
-  height: clamp(120px, 18vw, 260px);
-  background: linear-gradient(180deg,
+  height: clamp(160px, 22vw, 340px);
+  background: linear-gradient(180deg in oklab,
     #f0ebe1 0%,
-    #dfd8cd 14%,
-    #c4bbb0 25%,
-    #9d9388 38%,
+    #e8e0d2 6%,
+    #dcd3c2 12%,
+    #cbc0ad 18%,
+    #baae9b 25%,
+    #a99c89 32%,
+    #978a78 38%,
+    #847868 44%,
     #706660 50%,
-    #4a4240 62%,
-    #2e2a34 76%,
-    #201f2c 88%,
+    #5e544e 56%,
+    #4d4443 62%,
+    #3e383f 68%,
+    #332e38 75%,
+    #2a2633 82%,
+    #23212f 88%,
+    #1e1d2a 94%,
     #1a1b26 100%
   );
   pointer-events: none;

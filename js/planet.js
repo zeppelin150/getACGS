@@ -20,6 +20,8 @@
   var PARALLAX_Y_BASE = 16;
   var GLOW_MIN = 0.35;
   var GLOW_MAX = 0.85;
+  var FLOAT_AMPLITUDE = 10;   // px, replaces CSS @keyframes planet-float
+  var FLOAT_PERIOD = 8000;    // ms, matches original 8s duration
 
   // Scroll-driven expansion — dramatic Anthropic-style
   window.addEventListener('scroll', function () {
@@ -57,9 +59,13 @@
     currentMX += (targetMX - currentMX) * 0.05;
     currentMY += (targetMY - currentMY) * 0.05;
 
+    // Float oscillation (replaces CSS margin-top animation to avoid layout reflow)
+    var t = (performance.now() % FLOAT_PERIOD) / FLOAT_PERIOD;
+    var floatOffset = (Math.cos(t * Math.PI * 2) - 1) * 0.5 * FLOAT_AMPLITUDE;
+
     img.style.setProperty('--planet-scale', scrollScale);
     img.style.setProperty('--planet-tx', currentMX + 'px');
-    img.style.setProperty('--planet-ty', currentMY + 'px');
+    img.style.setProperty('--planet-ty', (currentMY + floatOffset) + 'px');
 
     // Dynamic glow: intensifies as planet grows
     var glowLevel = GLOW_MIN + scrollProgress * (GLOW_MAX - GLOW_MIN);

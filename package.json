@@ -6,6 +6,8 @@
   "scripts": {
     "test:visual": "npx playwright test",
     "test:visual:update": "npx playwright test --update-snapshots",
+    "test:live": "npx playwright test --config=playwright-live.config.ts",
+    "test:live:update": "npx playwright test --config=playwright-live.config.ts --update-snapshots",
     "figma:sync": "node scripts/figma-sync.mjs"
   },
   "devDependencies": {

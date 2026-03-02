@@ -10,17 +10,15 @@ export default defineConfig({
 
   expect: {
     toHaveScreenshot: {
-      // Allow 0.3% pixel difference to absorb anti-aliasing / sub-pixel rendering
-      maxDiffPixelRatio: 0.003,
-      // Threshold for individual pixel color comparison (0-1)
-      threshold: 0.2,
+      // Slightly more lenient for live site (network variability, font rendering)
+      maxDiffPixelRatio: 0.005,
+      threshold: 0.25,
     },
   },
 
   use: {
-    baseURL: 'http://127.0.0.1:3000',
-    // Disable animations so screenshots are deterministic
-    actionTimeout: 10000,
+    baseURL: 'https://getacgs.io',
+    actionTimeout: 15000,
   },
 
   projects: [
@@ -48,9 +46,5 @@ export default defineConfig({
     },
   ],
 
-  webServer: {
-    command: 'python -m http.server 3000 --bind 127.0.0.1',
-    port: 3000,
-    reuseExistingServer: true,
-  },
+  // No webServer — testing against the live site
 });

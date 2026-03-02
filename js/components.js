@@ -57,7 +57,7 @@ window.Components = {
         <h3>${p.tier}</h3>
         <div class="price">${p.price}<span>${p.period}</span></div>
         <ul class="checklist">${p.features.map(f => `<li>${f}</li>`).join('')}</ul>
-        <a class="btn ${p.featured ? 'btn-primary' : 'btn-ghost'}" href="contact.html">${p.cta}</a>
+        <a class="btn btn-primary" href="contact.html">${p.cta}</a>
       </div>
     `).join('');
   },
