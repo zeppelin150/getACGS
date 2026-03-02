@@ -94,8 +94,18 @@ p { line-height: 1.7; margin: 0 0 12px; }
   position: relative;
   background: var(--bg-dark);
   text-align: center;
-  padding: 0 24px 60px;
-  overflow: hidden;
+  padding: 0 24px 0;
+  overflow: visible;
+}
+/* Gradient lives on the section itself — no element boundary seam.
+   Two-stop oklab gradient is the smoothest — no manual banding. */
+.hero-visual::after {
+  content: '';
+  display: block;
+  height: clamp(200px, 30vw, 440px);
+  margin: 0 -24px;
+  background: linear-gradient(180deg in oklab, #16161e, #f0ebe1);
+  pointer-events: none;
 }
 .hero-visual-img {
   display: block;
@@ -362,51 +372,14 @@ p { line-height: 1.7; margin: 0 0 12px; }
 /* ============================================================
    UMBRA GRADIENTS — Dark ↔ Parchment transitions
    ============================================================ */
+/* .umbra-to-light is now rendered via .hero-visual::after — hide the standalone div */
 .umbra-to-light {
-  height: clamp(160px, 22vw, 340px);
-  background: linear-gradient(180deg in oklab,
-    #1a1b26 0%,
-    #1e1d2a 6%,
-    #23212f 12%,
-    #2a2633 18%,
-    #332e38 25%,
-    #3e383f 32%,
-    #4d4443 38%,
-    #5e544e 44%,
-    #706660 50%,
-    #847868 56%,
-    #978a78 62%,
-    #a99c89 68%,
-    #baae9b 75%,
-    #cbc0ad 82%,
-    #dcd3c2 88%,
-    #e8e0d2 94%,
-    #f0ebe1 100%
-  );
-  pointer-events: none;
+  display: none;
 }
 
 .umbra-to-dark {
-  height: clamp(160px, 22vw, 340px);
-  background: linear-gradient(180deg in oklab,
-    #f0ebe1 0%,
-    #e8e0d2 6%,
-    #dcd3c2 12%,
-    #cbc0ad 18%,
-    #baae9b 25%,
-    #a99c89 32%,
-    #978a78 38%,
-    #847868 44%,
-    #706660 50%,
-    #5e544e 56%,
-    #4d4443 62%,
-    #3e383f 68%,
-    #332e38 75%,
-    #2a2633 82%,
-    #23212f 88%,
-    #1e1d2a 94%,
-    #1a1b26 100%
-  );
+  height: clamp(200px, 30vw, 440px);
+  background: linear-gradient(180deg in oklab, #f0ebe1, #1a1b26);
   pointer-events: none;
 }
 
