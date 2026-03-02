@@ -17,14 +17,14 @@
 
   // Configuration
   var MIN_SCALE = 1;
-  var MAX_SCALE = 3.8;
+  var MAX_SCALE = 2.4;
   var PARALLAX_BASE = 24;
   var PARALLAX_Y_BASE = 16;
   var GLOW_MIN = 0.35;
   var GLOW_MAX = 0.85;
   var FLOAT_AMPLITUDE = 10;   // px
   var FLOAT_PERIOD = 8000;    // ms
-  var TEXT_FADE_END = 0.4;    // text fully gone by 40% of scroll progress
+  var TEXT_FADE_END = 0.35;   // text fully gone by 35% of scroll progress
 
   // Scroll-driven expansion — uses .hero-track as the scroll runway
   window.addEventListener('scroll', function () {
@@ -34,8 +34,8 @@
     if (scrollRoom <= 0) return;
     var p = Math.max(0, Math.min(1, -rect.top / scrollRoom));
 
-    // Smoothstep easing for dramatic acceleration
-    var eased = p * p * (3 - 2 * p);
+    // Gentle ease-out: every scroll tick produces visible, proportional growth
+    var eased = 1 - (1 - p) * (1 - p);
 
     scrollScale = MIN_SCALE + eased * (MAX_SCALE - MIN_SCALE);
     scrollProgress = p;
