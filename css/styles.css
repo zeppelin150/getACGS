@@ -78,26 +78,31 @@ p { line-height: 1.7; margin: 0 0 12px; }
 .nav a.active { color: var(--brand); }
 .small { font-size: .88rem; }
 
-/* === HERO — PLANET (Anthropic-style scroll-through) === */
+/* === HERO — PLANET (Anthropic-style expanding container) === */
 .hero-track { position: relative; height: 300vh; background: var(--bg-dark); }
-.hero { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background: var(--bg-dark); }
+.hero {
+  position: sticky; top: 0; height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; background: var(--bg-dark);
+}
 .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 720px; will-change: transform, opacity; }
 .hero-content h1 { color: var(--text-bright); margin-bottom: 20px; }
 .hero-content .lead { margin: 0 auto 28px; }
 
 /* Neptune — Real image, rising from bottom of hero */
+/* Invisible expanding wrapper — starts narrow, widens on scroll to reveal planet */
 .planet-container {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  width: 64%;
+  overflow: hidden;
   z-index: 1;
   pointer-events: none;
-  clip-path: inset(0 18% 0 18%);
-  will-change: clip-path;
+  will-change: width;
 }
 #neptune-img {
-  --planet-scale: 1;
   --planet-tx: 0px;
   --planet-ty: 0px;
   --planet-glow: 0.35;
@@ -105,7 +110,7 @@ p { line-height: 1.7; margin: 0 0 12px; }
   width: clamp(480px, 55vw, 820px);
   max-width: none;
   height: auto;
-  transform: translateY(55%) scale(var(--planet-scale)) translate(var(--planet-tx), var(--planet-ty));
+  transform: translateY(55%) translate(var(--planet-tx), var(--planet-ty));
   filter: drop-shadow(0 0 80px rgba(60, 100, 230, var(--planet-glow)))
           drop-shadow(0 0 160px rgba(80, 130, 255, calc(var(--planet-glow) * 0.5)));
   will-change: transform, filter;
