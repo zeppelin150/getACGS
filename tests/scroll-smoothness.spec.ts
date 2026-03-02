@@ -1,107 +1,69 @@
 import { test, expect } from '@playwright/test';
 
 /**
- * Scroll Smoothness Test — GPU-accelerated clip-path expansion
+ * Scroll Smoothness Test — Static hero
  *
- * The planet does NOT scale. A clip-path on .planet-container starts
- * cropped (inset 18% each side) and opens to 0%, progressively
- * revealing more of the planet. No layout reflow — compositor only.
+ * Hero and governance image scroll naturally with the page.
+ * No JS-driven animations. Verifies page scrolls and key
+ * sections become visible.
  */
 
-test.describe('hero planet scroll smoothness', () => {
-  test('each wheel tick opens the planet clip', async ({ page }) => {
+test.describe('hero scroll behavior', () => {
+  test('page scrolls naturally and governance image is visible', async ({ page }) => {
     await page.goto('/', { waitUntil: 'networkidle' });
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(500);
 
-    // Read the clip-path inset % (lower = more revealed)
-    const getInset = () =>
-      page.evaluate(() => {
-        const el = document.querySelector('.planet-container') as HTMLElement;
-        if (!el) return 18;
-        const cp = el.style.clipPath || getComputedStyle(el).clipPath;
-        const match = cp.match(/inset\([^)]*?\s+([\d.]+)%/);
-        return match ? parseFloat(match[1]) : 18;
-      });
-
-    const getScrollY = () => page.evaluate(() => window.scrollY);
-
+    // Start at top
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.waitForTimeout(100);
 
-    const initialInset = await getInset();
-    expect(initialInset).toBeGreaterThanOrEqual(15);
+    const getScrollY = () => page.evaluate(() => window.scrollY);
 
+    // Hero content should be visible at top
+    const heroContent = page.locator('.hero-content');
+    await expect(heroContent).toBeVisible();
+
+    // Scroll down with wheel ticks
     const TICKS = 8;
     const DELTA_PER_TICK = 60;
     const PAUSE_BETWEEN = 120;
 
-    interface TickResult {
-      tick: number;
-      scrollY: number;
-      inset: number;
-      delta: number;
-    }
+    const scrollPositions: number[] = [];
 
-    const results: TickResult[] = [];
-    let prevInset = initialInset;
-
-    for (let i = 1; i <= TICKS; i++) {
+    for (let i = 0; i < TICKS; i++) {
       await page.mouse.wheel(0, DELTA_PER_TICK);
       await page.waitForTimeout(PAUSE_BETWEEN);
-
-      const scrollY = await getScrollY();
-      const inset = await getInset();
-      const delta = Math.round((prevInset - inset) * 10000) / 10000;
-
-      results.push({ tick: i, scrollY, inset: Math.round(inset * 100) / 100, delta });
-      prevInset = inset;
+      scrollPositions.push(await getScrollY());
     }
 
-    console.log('\n=== Scroll Smoothness Report (Clip Inset) ===');
-    console.log('Tick | scrollY | inset% | delta');
-    console.log('-----|---------|--------|------');
-    for (const r of results) {
-      console.log(
-        `  ${String(r.tick).padStart(2)}  |  ${String(r.scrollY).padStart(5)} | ${r.inset.toFixed(2).padStart(6)}% | ${r.delta >= 0 ? '+' : ''}${r.delta.toFixed(4)}`
-      );
+    // Page should have scrolled
+    const finalScroll = scrollPositions[scrollPositions.length - 1];
+    expect(finalScroll, 'Page should scroll').toBeGreaterThan(0);
+
+    // Each tick should move the page (monotonically increasing)
+    for (let i = 1; i < scrollPositions.length; i++) {
+      expect(
+        scrollPositions[i],
+        `Tick ${i + 1} should scroll further than tick ${i}`
+      ).toBeGreaterThanOrEqual(scrollPositions[i - 1]);
     }
 
-    const inTrackResults = results.filter((r) => r.scrollY > 0);
-    const activeTicks = inTrackResults.filter((r) => r.delta > 0.01);
-    const deadTicks = inTrackResults.filter((r) => r.delta <= 0.01);
-    const deltas = activeTicks.map((r) => r.delta);
+    // Scroll to governance image
+    const heroVisual = page.locator('.hero-visual-img');
+    await heroVisual.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(300);
 
-    console.log(`\nActive ticks: ${activeTicks.length}/${inTrackResults.length}`);
-    console.log(`Dead ticks:   ${deadTicks.length}/${inTrackResults.length}`);
+    await expect(heroVisual).toBeVisible();
 
-    if (deltas.length > 0) {
-      const avgDelta = deltas.reduce((a, b) => a + b, 0) / deltas.length;
-      const maxDelta = Math.max(...deltas);
-      const minDelta = Math.min(...deltas);
-      console.log(`Avg delta: ${avgDelta.toFixed(4)}, Min: ${minDelta.toFixed(4)}, Max: ${maxDelta.toFixed(4)}`);
+    // Caption should also be visible
+    const caption = page.locator('.hero-visual-caption');
+    await expect(caption).toBeVisible();
+    await expect(caption).toContainText('governance');
 
-      for (const r of activeTicks) {
-        expect(r.delta, `Tick ${r.tick} spike`).toBeLessThan(avgDelta * 5);
-      }
-    }
-
-    const responsiveness = inTrackResults.length > 0 ? activeTicks.length / inTrackResults.length : 0;
-    console.log(`Responsiveness: ${(responsiveness * 100).toFixed(0)}%`);
-    expect(responsiveness, `${(responsiveness * 100).toFixed(0)}% responsiveness`).toBeGreaterThan(0.6);
-
-    const finalInset = await getInset();
-    expect(finalInset, 'Clip should have opened').toBeLessThan(initialInset - 2);
-
-    let maxConsecutiveDead = 0;
-    let consecutiveDead = 0;
-    for (const r of inTrackResults) {
-      if (r.delta <= 0.01) { consecutiveDead++; maxConsecutiveDead = Math.max(maxConsecutiveDead, consecutiveDead); }
-      else { consecutiveDead = 0; }
-    }
-    console.log(`Max consecutive dead: ${maxConsecutiveDead}`);
-    expect(maxConsecutiveDead, `${maxConsecutiveDead} consecutive dead`).toBeLessThanOrEqual(2);
-
+    console.log('\n=== Scroll Smoothness Report (Static Hero) ===');
+    console.log(`Scroll positions: ${scrollPositions.join(', ')}`);
+    console.log(`Final scroll: ${finalScroll}px`);
     console.log('=== Test Complete ===\n');
   });
 });

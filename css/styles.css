@@ -78,56 +78,37 @@ p { line-height: 1.7; margin: 0 0 12px; }
 .nav a.active { color: var(--brand); }
 .small { font-size: .88rem; }
 
-/* === HERO — PLANET (Anthropic-style expanding container) === */
-.hero-track { position: relative; height: 160vh; background: var(--bg-dark); }
+/* === HERO — Simple text section === */
 .hero {
-  position: sticky; top: 0; height: 100vh;
+  position: relative;
+  min-height: 85vh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   overflow: hidden; background: var(--bg-dark);
 }
-.hero-content { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 720px; will-change: transform, opacity; }
+.hero-content { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 720px; }
 .hero-content h1 { color: var(--text-bright); margin-bottom: 20px; }
 .hero-content .lead { margin: 0 auto 28px; }
 
-/* Neptune — Real image, rising from bottom of hero */
-/* Invisible expanding clip — GPU-accelerated, no layout thrash */
-.planet-container {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1;
-  pointer-events: none;
-  clip-path: inset(0 18% 0 18%);
-  will-change: clip-path;
+/* Governance visual — static image section */
+.hero-visual {
+  position: relative;
+  background: var(--bg-dark);
+  text-align: center;
+  padding: 0 24px 60px;
+  overflow: hidden;
 }
-#neptune-img {
-  --planet-tx: 0px;
-  --planet-ty: 0px;
-  --planet-glow: 0.35;
+.hero-visual-img {
   display: block;
-  width: clamp(480px, 55vw, 820px);
+  width: clamp(340px, 88vw, 1200px);
   max-width: none;
   height: auto;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%) translateY(55%) translate(var(--planet-tx), var(--planet-ty));
-  filter: drop-shadow(0 0 80px rgba(60, 100, 230, var(--planet-glow)))
-          drop-shadow(0 0 160px rgba(80, 130, 255, calc(var(--planet-glow) * 0.5)));
-  will-change: transform, filter;
-  pointer-events: none;
-  user-select: none;
+  margin: 0 auto;
+  border-radius: 16px;
 }
-
-.hero-gradient-fade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 30%;
-  background: linear-gradient(to bottom, transparent, var(--bg));
-  z-index: 3;
-  pointer-events: none;
+.hero-visual-caption {
+  color: var(--muted);
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  margin-top: 20px;
 }
 
 /* Stars background */
