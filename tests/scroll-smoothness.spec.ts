@@ -29,8 +29,8 @@ test.describe('hero planet scroll smoothness', () => {
     const initialWidth = await getContainerWidth();
     expect(initialWidth).toBeLessThanOrEqual(68);
 
-    const TICKS = 15;
-    const DELTA_PER_TICK = 100;
+    const TICKS = 8;
+    const DELTA_PER_TICK = 60;
     const PAUSE_BETWEEN = 120;
 
     interface TickResult {

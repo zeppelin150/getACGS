@@ -79,7 +79,7 @@ p { line-height: 1.7; margin: 0 0 12px; }
 .small { font-size: .88rem; }
 
 /* === HERO — PLANET (Anthropic-style expanding container) === */
-.hero-track { position: relative; height: 300vh; background: var(--bg-dark); }
+.hero-track { position: relative; height: 160vh; background: var(--bg-dark); }
 .hero {
   position: sticky; top: 0; height: 100vh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -110,7 +110,9 @@ p { line-height: 1.7; margin: 0 0 12px; }
   width: clamp(480px, 55vw, 820px);
   max-width: none;
   height: auto;
-  transform: translateY(55%) translate(var(--planet-tx), var(--planet-ty));
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%) translateY(55%) translate(var(--planet-tx), var(--planet-ty));
   filter: drop-shadow(0 0 80px rgba(60, 100, 230, var(--planet-glow)))
           drop-shadow(0 0 160px rgba(80, 130, 255, calc(var(--planet-glow) * 0.5)));
   will-change: transform, filter;
