@@ -2,17 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Terms of Service — Cambric AI</title>
+  <title>Blog — Cambric AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Insights on AI security, operational analytics, and AI governance from the Cambric AI team." />
+  <meta property="og:title" content="Blog — Cambric AI" />
+  <meta property="og:description" content="Insights on AI security, analytics, and governance." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="favicon.svg" />
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
   <link href="css/styles.css?v=2" rel="stylesheet" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script defer src="js/logger.js?v=2"></script>
   <script defer src="js/utils.js?v=2"></script>
   <script defer src="js/theming.js?v=2"></script>
+  <script defer src="js/constants.js?v=2"></script>
+  <script defer src="js/components.js?v=2"></script>
   <script defer src="js/main.js?v=2"></script>
 </head>
-<body data-page="terms">
+<body data-page="blog">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -32,7 +40,7 @@
             </div>
           </li>
           <li><a href="research.html">Research</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a class="active" href="blog.html">Blog</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -42,20 +50,29 @@
 
   <div class="page-header">
     <div class="container">
-      <h1>Terms of Service</h1>
+      <h1>Blog</h1>
+      <p class="muted lead">Insights and updates from the Cambric AI team.</p>
     </div>
   </div>
 
   <div class="umbra-to-light"></div>
 
-  <main id="main" class="light-content legal-content">
+  <main id="main" class="light-content">
     <div class="container section-pad">
-      <p>By using this site, you agree to these terms. Cambric AI reserves the right to update these terms at any time.</p>
-      <h2>Use of services</h2>
-      <p>Our products and services are provided under license for enterprise use. Usage is subject to applicable laws and your service agreement.</p>
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:contact@cambricai.io">contact@cambricai.io</a></p>
-      <p>Effective: <span id="year"></span></p>
+      <section>
+        <header class="section-head">
+          <h2>Recent Posts</h2>
+        </header>
+        <div class="blog-grid" id="blog-grid"></div>
+      </section>
+
+      <section style="margin-top:60px">
+        <div class="blog-cta">
+          <h3>Follow us on Substack</h3>
+          <p class="muted">Get our latest posts delivered to your inbox.</p>
+          <a class="btn btn-primary" href="https://cambricai.substack.com" target="_blank" rel="noopener">Subscribe on Substack</a>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -64,9 +81,7 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <div class="brand-row">
-          <img src="assets/logo.svg" alt="" height="24" />
-        </div>
+        <div class="brand-row"><img src="assets/logo.svg" alt="" height="24" /></div>
         <p class="muted" style="font-size:.9rem">Visibility and control for AI systems.</p>
         <div class="social-links">
           <a href="#" aria-label="LinkedIn">LinkedIn</a>

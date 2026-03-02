@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Cambric AI products: Harpax AI security monitoring, Revvit operational pattern analytics, and Quinte personality construct governance." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet" />
+  <link href="css/styles.css?v=2" rel="stylesheet" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script defer src="js/logger.js"></script>
-  <script defer src="js/utils.js"></script>
-  <script defer src="js/theming.js"></script>
-  <script defer src="js/constants.js"></script>
-  <script defer src="js/components.js"></script>
-  <script defer src="js/main.js"></script>
+  <script defer src="js/logger.js?v=2"></script>
+  <script defer src="js/utils.js?v=2"></script>
+  <script defer src="js/theming.js?v=2"></script>
+  <script defer src="js/constants.js?v=2"></script>
+  <script defer src="js/components.js?v=2"></script>
+  <script defer src="js/main.js?v=2"></script>
 </head>
 <body data-page="products">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -24,9 +24,18 @@
       <nav class="nav" aria-label="Primary">
         <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
         <ul id="navMenu" class="nav-links">
-          <li><a class="active" href="products.html">Products</a></li>
+          <li class="nav-dropdown">
+            <a class="active" href="products.html">Products</a>
+            <div class="nav-dropdown-menu">
+              <a href="products.html">Overview</a>
+              <a href="harpax.html">Harpax</a>
+              <a href="revvit.html">Revvit</a>
+              <a href="quinte.html">Quinte</a>
+              <a href="store.html">Store</a>
+            </div>
+          </li>
           <li><a href="research.html">Research</a></li>
-          <li><a href="news.html">News</a></li>
+          <li><a href="blog.html">Blog</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -54,14 +63,24 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <div class="brand-row"><img src="assets/logo.svg" alt="" height="24" /></div>
+        <div class="brand-row">
+          <img src="assets/logo.svg" alt="" height="24" />
+        </div>
         <p class="muted" style="font-size:.9rem">Visibility and control for AI systems.</p>
+        <div class="social-links">
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" aria-label="Twitter">X</a>
+          <a href="#" aria-label="GitHub">GitHub</a>
+        </div>
       </div>
       <nav aria-label="Footer">
         <ul class="footer-links">
           <li><a href="products.html">Products</a></li>
           <li><a href="research.html">Research</a></li>
+          <li><a href="blog.html">Blog</a></li>
           <li><a href="news.html">News</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="store.html">Store</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>

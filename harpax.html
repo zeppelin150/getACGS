@@ -2,17 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Terms of Service — Cambric AI</title>
+  <title>Harpax — Continuous AI Security — Cambric AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Harpax: Continuous AI security monitoring. Proactive vulnerability detection and anomaly alerting for AI systems." />
+  <meta property="og:title" content="Harpax — Continuous AI Security — Cambric AI" />
+  <meta property="og:description" content="Proactive security monitoring for AI systems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="favicon.svg" />
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
   <link href="css/styles.css?v=2" rel="stylesheet" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script defer src="js/logger.js?v=2"></script>
   <script defer src="js/utils.js?v=2"></script>
   <script defer src="js/theming.js?v=2"></script>
+  <script defer src="js/constants.js?v=2"></script>
+  <script defer src="js/components.js?v=2"></script>
   <script defer src="js/main.js?v=2"></script>
 </head>
-<body data-page="terms">
+<body data-page="harpax">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -22,7 +30,7 @@
         <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
         <ul id="navMenu" class="nav-links">
           <li class="nav-dropdown">
-            <a href="products.html">Products</a>
+            <a class="active" href="products.html">Products</a>
             <div class="nav-dropdown-menu">
               <a href="products.html">Overview</a>
               <a href="harpax.html">Harpax</a>
@@ -40,23 +48,44 @@
     </div>
   </header>
 
-  <div class="page-header">
-    <div class="container">
-      <h1>Terms of Service</h1>
-    </div>
+  <div class="page-header product-hero">
+    <div class="container" id="product-hero-content"></div>
   </div>
 
   <div class="umbra-to-light"></div>
 
-  <main id="main" class="light-content legal-content">
-    <div class="container section-pad">
-      <p>By using this site, you agree to these terms. Cambric AI reserves the right to update these terms at any time.</p>
-      <h2>Use of services</h2>
-      <p>Our products and services are provided under license for enterprise use. Usage is subject to applicable laws and your service agreement.</p>
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:contact@cambricai.io">contact@cambricai.io</a></p>
-      <p>Effective: <span id="year"></span></p>
-    </div>
+  <main id="main" class="light-content">
+    <section class="product-detail-section section-pad">
+      <div class="container">
+        <h2>About Harpax</h2>
+        <p id="product-description" class="lead" style="max-width:720px"></p>
+      </div>
+    </section>
+
+    <section class="product-detail-section section-pad">
+      <div class="container">
+        <h2>Features</h2>
+        <div class="feature-grid" id="product-features"></div>
+      </div>
+    </section>
+
+    <section class="product-detail-section section-pad">
+      <div class="container">
+        <h2>Pricing</h2>
+        <div class="pricing-grid" id="product-pricing"></div>
+      </div>
+    </section>
+
+    <section class="product-detail-section section-pad" style="text-align:center">
+      <div class="container">
+        <h2>Ready to secure your AI systems?</h2>
+        <p class="muted">Get started with Harpax today.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary btn-lg" href="contact.html">Contact Sales</a>
+          <a class="btn btn-ghost btn-lg" href="store.html">View in Store</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <div class="umbra-to-dark"></div>
@@ -64,9 +93,7 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <div class="brand-row">
-          <img src="assets/logo.svg" alt="" height="24" />
-        </div>
+        <div class="brand-row"><img src="assets/logo.svg" alt="" height="24" /></div>
         <p class="muted" style="font-size:.9rem">Visibility and control for AI systems.</p>
         <div class="social-links">
           <a href="#" aria-label="LinkedIn">LinkedIn</a>

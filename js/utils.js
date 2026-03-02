@@ -14,6 +14,16 @@ window.UI = {
       btn.setAttribute('aria-expanded', String(open));
     });
   },
+  dropdownNav: () => {
+    $$('.nav-dropdown > a').forEach(a => {
+      on(a, 'click', (e) => {
+        if (window.innerWidth <= 860) {
+          e.preventDefault();
+          a.closest('.nav-dropdown').classList.toggle('open');
+        }
+      });
+    });
+  },
   ioReveal: () => {
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
