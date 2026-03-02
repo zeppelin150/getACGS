@@ -90,17 +90,16 @@ p { line-height: 1.7; margin: 0 0 12px; }
 .hero-content .lead { margin: 0 auto 28px; }
 
 /* Neptune — Real image, rising from bottom of hero */
-/* Invisible expanding wrapper — starts narrow, widens on scroll to reveal planet */
+/* Invisible expanding clip — GPU-accelerated, no layout thrash */
 .planet-container {
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 64%;
-  overflow: hidden;
+  left: 0;
+  width: 100%;
   z-index: 1;
   pointer-events: none;
-  will-change: width;
+  clip-path: inset(0 18% 0 18%);
+  will-change: clip-path;
 }
 #neptune-img {
   --planet-tx: 0px;

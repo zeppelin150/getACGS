@@ -14,9 +14,8 @@
   var running = true;
   var raf;
 
-  // Invisible container expansion
-  var START_WIDTH = 64;           // % at scroll=0 — planet partially hidden
-  var END_WIDTH = 100;            // % at scroll=1 — fully revealed
+  // Invisible clip expansion (GPU-accelerated, no layout reflow)
+  var START_INSET = 18;           // % cropped each side at scroll=0
 
   // Parallax + ambient
   var PARALLAX_BASE = 18;
@@ -37,10 +36,10 @@
 
     scrollProgress = p;
 
-    // Expand invisible planet wrapper
+    // Expand invisible clip (GPU-only, no layout)
     if (planetContainer) {
-      var w = START_WIDTH + p * (END_WIDTH - START_WIDTH);
-      planetContainer.style.width = w + '%';
+      var inset = START_INSET * (1 - p);
+      planetContainer.style.clipPath = 'inset(0 ' + inset + '% 0 ' + inset + '%)';
     }
 
     // Fade hero text
