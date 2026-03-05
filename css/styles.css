@@ -89,34 +89,66 @@ p { line-height: 1.7; margin: 0 0 12px; }
 .hero-content h1 { color: var(--text-bright); margin-bottom: 20px; }
 .hero-content .lead { margin: 0 auto 28px; }
 
-/* Governance visual — static image section */
+/* Governance visual — framework SVG section */
 .hero-visual {
   position: relative;
-  background: var(--bg-dark);
+  background: #F0EEE8;
   text-align: center;
   padding: 0 24px 0;
   overflow: visible;
 }
-/* Gradient lives on the section itself — no element boundary seam.
-   Two-stop oklab gradient is the smoothest — no manual banding. */
-.hero-visual::after {
+/* Dark→light gradient ABOVE the content (transition from dark hero) */
+.hero-visual::before {
   content: '';
   display: block;
   height: clamp(200px, 30vw, 440px);
   margin: 0 -24px;
-  background: linear-gradient(180deg in oklab, #16161e, #f0ebe1);
+  background: linear-gradient(180deg in oklab, #16161e, #F0EEE8);
   pointer-events: none;
 }
-.hero-visual-img {
+/* Subtle transition to parchment below */
+.hero-visual::after {
+  content: '';
   display: block;
-  width: clamp(340px, 88vw, 1200px);
-  max-width: none;
-  height: auto;
-  margin: 0 auto;
-  border-radius: 16px;
+  height: clamp(80px, 10vw, 160px);
+  margin: 0 -24px;
+  background: linear-gradient(180deg, #F0EEE8, #f0ebe1);
+  pointer-events: none;
 }
+
+/* Framework page container */
+.hero-framework-page {
+  position: relative;
+  width: clamp(340px, 88vw, 1200px);
+  aspect-ratio: 960 / 700;
+  margin: 0 auto;
+  background: #F0EEE8;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.hero-framework-page svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+/* Corner marks */
+.fw-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: #151A28;
+  border-style: solid;
+  z-index: 1;
+}
+.fw-tl { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
+.fw-tr { top: 12px; right: 12px; border-width: 1px 1px 0 0; }
+.fw-bl { bottom: 12px; left: 12px; border-width: 0 0 1px 1px; }
+.fw-br { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
+
 .hero-visual-caption {
-  color: var(--muted);
+  color: var(--parchment-muted);
   font-size: clamp(0.95rem, 1.2vw, 1.15rem);
   margin-top: 20px;
 }

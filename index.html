@@ -12,7 +12,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="manifest" href="site.webmanifest">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=EB+Garamond:wght@400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="css/styles.css?v=2" rel="stylesheet" />
   <script defer src="js/logger.js?v=2"></script>
   <script defer src="js/utils.js?v=2"></script>
@@ -77,8 +77,100 @@
 
   <!-- Governance visual — static, scrolls naturally with the page -->
   <section class="hero-visual">
-    <div class="stars"></div>
-    <img class="hero-visual-img" src="assets/hero-governance.jpg" alt="AI Governance — Policy, Review, Approve, Audit, Model Registry" draggable="false" />
+    <div class="hero-framework-page">
+      <div class="fw-corner fw-tl"></div>
+      <div class="fw-corner fw-tr"></div>
+      <div class="fw-corner fw-bl"></div>
+      <div class="fw-corner fw-br"></div>
+      <svg viewBox="0 0 960 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI Governance Framework — Layered Intelligence Architecture">
+        <defs>
+          <style>
+            text { font-family: 'JetBrains Mono', monospace; }
+            .htit { font-family: 'EB Garamond', serif; font-size: 22px; font-weight: 400; }
+            .hsub { font-size: 7px; font-weight: 300; letter-spacing: .12em; }
+            .coreAI { font-family: 'EB Garamond', serif; font-size: 52px; font-weight: 500; }
+            .corelab { font-size: 5.5px; font-weight: 300; letter-spacing: .32em; }
+            .cn { font-size: 7px; font-weight: 300; letter-spacing: .08em; }
+            .ct { font-size: 11px; font-weight: 500; letter-spacing: .02em; }
+            .cs { font-size: 7.5px; font-weight: 300; letter-spacing: .01em; }
+            .al { font-size: 6.5px; font-weight: 300; letter-spacing: .24em; }
+            .foot { font-size: 6.5px; font-weight: 300; letter-spacing: .12em; }
+          </style>
+          <marker id="arr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+            <path d="M0,.5L4.5,2.5L0,4.5Z" fill="#B8B4C4"/>
+          </marker>
+        </defs>
+        <!-- HEADER -->
+        <text x="52" y="54" class="htit" fill="#151A28">AI Governance Framework</text>
+        <text x="908" y="54" text-anchor="end" class="hsub" fill="#8A8890">// layered_intelligence_architecture — 2026</text>
+        <line x1="52" y1="63" x2="908" y2="63" stroke="#151A28" stroke-width=".9"/>
+        <!-- FOOTER -->
+        <line x1="52" y1="648" x2="908" y2="648" stroke="#C8C6D0" stroke-width=".6"/>
+        <text x="52" y="662" class="foot" fill="#AEACB8">AI Governance — Layered Intelligence Architecture</text>
+        <text x="908" y="662" text-anchor="end" class="foot" fill="#AEACB8">Confidential · Internal Use Only</text>
+        <!-- SPOKES -->
+        <line x1="480" y1="287" x2="480" y2="207" stroke="#C8C4D4" stroke-width=".8" marker-end="url(#arr)"/>
+        <line x1="558" y1="388" x2="630" y2="412" stroke="#C8C4D4" stroke-width=".8" marker-end="url(#arr)"/>
+        <line x1="413" y1="406" x2="343" y2="424" stroke="#C8C4D4" stroke-width=".8" marker-end="url(#arr)"/>
+        <line x1="534" y1="301" x2="650" y2="232" stroke="#C8C4D4" stroke-width=".7" stroke-dasharray="3 4" marker-end="url(#arr)"/>
+        <line x1="480" y1="443" x2="480" y2="568" stroke="#C8C4D4" stroke-width=".7" stroke-dasharray="3 4" marker-end="url(#arr)"/>
+        <line x1="426" y1="301" x2="311" y2="232" stroke="#C8C4D4" stroke-width=".7" stroke-dasharray="3 4" marker-end="url(#arr)"/>
+        <!-- OUTER ELLIPSE -->
+        <ellipse cx="480" cy="355" rx="278" ry="200" fill="none" stroke="#7060A8" stroke-width=".75" stroke-dasharray="3 7" opacity=".35"/>
+        <!-- MIDDLE ELLIPSE -->
+        <ellipse cx="480" cy="355" rx="192" ry="148" fill="none" stroke="#7060A8" stroke-width=".75" stroke-dasharray="2 5" opacity=".45"/>
+        <!-- INNER ELLIPSE -->
+        <ellipse cx="480" cy="355" rx="110" ry="88" fill="none" stroke="#151A28" stroke-width="1.1"/>
+        <!-- CORE -->
+        <circle cx="480" cy="355" r="68" fill="#0D1020"/>
+        <circle cx="480" cy="355" r="62" fill="none" stroke="#4A3C7A" stroke-width=".6" opacity=".4"/>
+        <text x="480" y="376" text-anchor="middle" class="coreAI" fill="#DDD9D2">AI</text>
+        <text x="480" y="393" text-anchor="middle" class="corelab" fill="#4A3C7A">CORE</text>
+        <!-- ARC LABELS -->
+        <path id="replArc" d="M 370,355 A 110,88 0 0,0 590,355" fill="none"/>
+        <text class="al" fill="#4A3C7A" opacity=".9"><textPath href="#replArc" startOffset="50%" text-anchor="middle">REPLICATION LAYER</textPath></text>
+        <path id="secArc" d="M 288,355 A 192,148 0 0,0 672,355" fill="none"/>
+        <text class="al" fill="#6050A0" opacity=".75"><textPath href="#secArc" startOffset="50%" text-anchor="middle">INFORMATION SECURITY INTELLIGENCE</textPath></text>
+        <path id="prodArc" d="M 202,355 A 278,200 0 0,0 758,355" fill="none"/>
+        <text class="al" fill="#504088" opacity=".6"><textPath href="#prodArc" startOffset="50%" text-anchor="middle">PRODUCT + OPERATIONS INTELLIGENCE</textPath></text>
+        <!-- S1 Monitor -->
+        <rect x="424" y="183" width="112" height="54" rx="2" fill="#F0EEE8" stroke="#1E1838" stroke-width="1"/>
+        <rect x="424" y="183" width="3" height="54" rx="1" fill="#2E2450"/>
+        <text x="436" y="199" class="cn" fill="#7060A8">S1</text>
+        <text x="436" y="215" class="ct" fill="#0D1020">Monitor</text>
+        <text x="436" y="228" class="cs" fill="#6A6878">session_activity</text>
+        <!-- S2 Detect -->
+        <rect x="632" y="390" width="112" height="54" rx="2" fill="#F0EEE8" stroke="#1E1838" stroke-width="1"/>
+        <rect x="632" y="390" width="3" height="54" rx="1" fill="#2E2450"/>
+        <text x="644" y="406" class="cn" fill="#7060A8">S2</text>
+        <text x="644" y="422" class="ct" fill="#0D1020">Detect</text>
+        <text x="644" y="435" class="cs" fill="#6A6878">threat_analysis</text>
+        <!-- S3 Enforce -->
+        <rect x="218" y="402" width="112" height="54" rx="2" fill="#141228" stroke="#2E2450" stroke-width="1"/>
+        <rect x="218" y="402" width="3" height="54" rx="1" fill="#4A3C7A"/>
+        <text x="230" y="418" class="cn" fill="#7060A8">S3</text>
+        <text x="230" y="434" class="ct" fill="#DDD9D2">Enforce</text>
+        <text x="230" y="447" class="cs" fill="#A090C8">block_or_log</text>
+        <!-- P1 Ingest -->
+        <rect x="660" y="210" width="112" height="54" rx="2" fill="#F0EEE8" stroke="#1E1838" stroke-width="1"/>
+        <rect x="660" y="210" width="3" height="54" rx="1" fill="#4A3C7A"/>
+        <text x="672" y="226" class="cn" fill="#7060A8">P1</text>
+        <text x="672" y="242" class="ct" fill="#0D1020">Ingest</text>
+        <text x="672" y="255" class="cs" fill="#6A6878">ticket + log_data</text>
+        <!-- P2 Classify -->
+        <rect x="424" y="570" width="112" height="54" rx="2" fill="#F0EEE8" stroke="#1E1838" stroke-width="1"/>
+        <rect x="424" y="570" width="3" height="54" rx="1" fill="#4A3C7A"/>
+        <text x="436" y="586" class="cn" fill="#7060A8">P2</text>
+        <text x="436" y="602" class="ct" fill="#0D1020">Classify</text>
+        <text x="436" y="615" class="cs" fill="#6A6878">trc + voc_tagging</text>
+        <!-- P3 Report -->
+        <rect x="188" y="210" width="112" height="54" rx="2" fill="#1E1838" stroke="#2E2450" stroke-width="1"/>
+        <rect x="188" y="210" width="3" height="54" rx="1" fill="#4A3C7A"/>
+        <text x="200" y="226" class="cn" fill="#7060A8">P3</text>
+        <text x="200" y="242" class="ct" fill="#DDD9D2">Report</text>
+        <text x="200" y="255" class="cs" fill="#A090C8">insights + export</text>
+      </svg>
+    </div>
     <p class="hero-visual-caption">Matching AI governance to your needs</p>
   </section>
 
