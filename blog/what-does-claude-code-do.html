@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What does Claude Code actually do to your codebase? — Cambric AI</title>
+<meta name="description" content="Most developers don't know what their AI assistant is doing under the hood. Here's what we found when we traced a real Claude Code session.">
+
+<!-- Favicon -->
+<link rel="icon" href="../favicon.svg">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+
+<style>
+  .post-header {
+    padding: 140px 48px 40px;
+    max-width: 740px;
+  }
+  .post-cat {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    color: var(--purple3);
+    background: rgba(74,60,122,.25);
+    border: 1px solid var(--purple);
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+  .post-headline {
+    font-family: 'EB Garamond', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-top: 16px;
+    line-height: 1.15;
+  }
+  .post-meta {
+    font-size: 9.5px;
+    color: var(--cream3);
+    letter-spacing: .06em;
+    margin-top: 14px;
+  }
+
+  .post-body {
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 40px 48px 80px;
+  }
+  .post-body p {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 12.5px;
+    line-height: 1.85;
+    color: var(--cream2);
+    margin-bottom: 16px;
+  }
+  .post-body h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--cream);
+    margin: 32px 0 12px;
+  }
+  .post-body pre {
+    background: #090C18;
+    color: var(--purple3);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.7;
+    padding: 16px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    margin: 16px 0;
+    overflow-x: auto;
+  }
+
+  .post-back {
+    font-size: 9.5px;
+    color: var(--purple3);
+    text-decoration: none;
+    letter-spacing: .06em;
+    transition: color .2s;
+  }
+  .post-back:hover { color: var(--cream); }
+
+  .post-cta {
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+    margin-top: 40px;
+  }
+  .post-cta h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 860px) {
+    .post-header { padding: 120px 24px 32px; }
+    .post-body { padding: 32px 24px 64px; }
+    .post-headline { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-logo">Cambric<span> AI</span></a>
+  <div class="nav-links">
+    <a href="../harpax.html">Harpax</a>
+    <a href="../research.html">Research</a>
+    <a href="https://github.com/nullevent/harpax">Docs</a>
+    <a href="#" class="nav-dl">Download →</a>
+  </div>
+</nav>
+
+<!-- POST HEADER -->
+<div class="post-header">
+  <span class="post-cat">AI SECURITY</span>
+  <h1 class="post-headline">What does Claude Code actually do to your codebase?</h1>
+  <div class="post-meta">March 2026 &middot; 5 min read</div>
+</div>
+
+<!-- POST BODY -->
+<div class="post-body">
+
+  <p>Picture this. You have a Rails application with a handful of models, a couple of API integrations, and some background jobs. You open Claude Code and type something like: "Add a Stripe webhook endpoint that handles subscription updates and syncs the status to our User model." You watch the assistant think for a moment, then it starts working. Files appear in the diff. A migration gets created. Maybe a test. A minute later it says it is done. You glance at the output, it looks right, you accept the changes.</p>
+
+  <p>But what actually happened during that minute? Which files did it read? Which ones did it modify? Did it run any commands? Did it reach out to any external services? Most developers have no idea, and until recently, there was no straightforward way to find out.</p>
+
+  <p>We decided to trace a few real sessions to understand what an AI coding assistant actually does when it works on a codebase. The results were interesting enough that we thought they were worth writing up.</p>
+
+  <h2>File reads: broader than you think</h2>
+
+  <p>The first thing an AI assistant does when you give it a task is orient itself. It needs context. That means reading files, and not just the ones you would expect.</p>
+
+  <p>In our traced session, Claude Code read 47 files before writing a single line of code. That included the target model and controller, obviously, but also the Gemfile, the database schema, the routes file, environment configuration, and several files in the config directory. It read database.yml to understand the database setup. It read credentials.yml.enc, presumably to check for existing Stripe keys.</p>
+
+  <p>Some of these reads make sense. An assistant needs to understand the project structure to generate code that fits. But it also means the model has ingested your database credentials, your API keys, your environment-specific configuration, and any secrets that happen to live in your repository. Whether or not it does anything harmful with that information, it has seen it.</p>
+
+  <h2>File writes: mostly what you asked for</h2>
+
+  <p>The writes were closer to what you would expect. A new controller file, a migration, an update to routes.rb, and a model concern for handling the webhook logic. It also modified the Gemfile to add the stripe gem if it was not already present, and updated a test file.</p>
+
+  <p>In one session we traced, the assistant also modified a .env file to add a placeholder Stripe key. That is a reasonable thing to do from a development perspective, but it also means the assistant is writing to files that contain sensitive configuration. If your .env is gitignored, this is probably fine. If it is not, you now have a placeholder secret in version control.</p>
+
+  <h2>Command execution: the invisible layer</h2>
+
+  <p>This is where things get interesting. Beyond reading and writing files, Claude Code executed several shell commands during our traced sessions. It ran bundle install to install the new gem. It ran rails db:migrate to apply the migration. It ran the test suite to verify its changes passed.</p>
+
+  <p>Each of these commands is individually reasonable. But together, they represent a significant amount of unsupervised system activity. The assistant installed a package from the internet, modified your database schema, and executed arbitrary code on your machine. All without explicit approval for each step.</p>
+
+  <p>In another session, we observed the assistant running curl to check an API endpoint it had just created. It also ran git diff to review its own changes. These are benign, but they demonstrate that the assistant treats shell access as a general-purpose tool, not a constrained interface.</p>
+
+  <h2>Network calls: reaching outside your machine</h2>
+
+  <p>Some sessions included outbound network requests. Package installation (bundle install, npm install) obviously requires network access. But we also observed the assistant making HTTP requests to verify API connectivity, and in one case, posting to a GitHub API endpoint to check repository metadata.</p>
+
+  <p>Most of these requests were benign and related to the task. But the assistant does not distinguish between "I need to install a dependency" and "I am going to make an HTTP request to an external service using credentials I read from your config files." Both are just actions it can take.</p>
+
+  <h2>Why this matters</h2>
+
+  <p>None of what we found was malicious. Claude Code is a well-built tool, and in every session we traced, it was doing exactly what we asked it to do. The issue is not intent. The issue is visibility.</p>
+
+  <p>When you run an AI coding assistant on your codebase, you are giving it broad access to your files, your credentials, your shell, and your network. It is capable, it is trusted, and it is largely unsupervised. That combination has real implications, not because the tool is dangerous, but because you cannot verify what it did after the fact.</p>
+
+  <p>If a junior developer joined your team and on their first day read every config file, ran migrations, installed packages, and made external API calls, you would want to know about it. You would review their work. You would have logs. With an AI assistant, most teams have none of that.</p>
+
+  <h2>Session tracing as a solution</h2>
+
+  <p>The fix is not to stop using AI assistants. They are genuinely useful. The fix is to record what they do so you can review it. Session tracing captures every file read, every file write, every command executed, and every network request, then presents it in a format you can actually read.</p>
+
+  <p>Here is what a traced session looks like:</p>
+
+<pre>09:14:02  READ   src/auth/session.rb
+09:14:04  READ   config/database.yml
+09:14:07  EXEC   bundle exec rails db:migrate
+09:14:22  READ   config/credentials.yml.enc
+09:14:23  WARN   credentials file accessed — sensitive_file_pattern
+09:14:45  NET    POST api.github.com /repos/… [200]
+09:14:46  BLOCK  external write blocked — severity: critical
+09:15:38  END    session complete · 2 warnings · 1 blocked · $0.34</pre>
+
+  <p>Every action is timestamped and categorized. Sensitive file access is flagged. External writes can be blocked in real time. At the end of the session, you get a summary with counts and cost.</p>
+
+  <p>This is not about distrusting the tool. It is about having the same level of visibility into AI actions that you already have for human actions. Audit logs exist for a reason. Your AI sessions should have them too.</p>
+
+  <h2>Getting this visibility</h2>
+
+  <p>We built <a href="../harpax.html" style="color: var(--purple3);">Harpax</a> to provide exactly this kind of session tracing. It runs locally, records everything your AI assistant does, and gives you a clear summary after every session. If something looks wrong, you will know. If everything looks fine, you have the logs to prove it.</p>
+
+  <p>It works with Claude Code, Cursor, Copilot, and any other AI tool that operates on your filesystem. The CLI is open source. The data never leaves your machine.</p>
+
+  <!-- BACK LINK -->
+  <a href="../blog.html" class="post-back">&larr; Back to writing</a>
+
+  <!-- CTA -->
+  <div class="post-cta">
+    <h3>Protect your AI sessions with Harpax</h3>
+    <a href="../harpax.html" class="btn-p">Learn more →</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="../index.html" class="footer-logo">Cambric AI</a>
+  <div class="footer-links">
+    <a href="../harpax.html">Harpax</a>
+    <a href="https://github.com/nullevent/harpax">Docs</a>
+    <a href="../research.html">Research</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <span class="footer-note">&copy; 2026 Cambric AI &middot; All session data stays local</span>
+</footer>
+
+</body>
+</html>

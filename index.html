@@ -1,279 +1,278 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Cambric AI — Visibility and Control for AI Systems</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Cambric AI gives organizations visibility and control over AI systems — from security monitoring to operational analytics to AI governance." />
-  <meta property="og:title" content="Cambric AI — Visibility and Control for AI Systems" />
-  <meta property="og:description" content="Tools that give organizations visibility and control over AI systems." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="favicon.svg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=EB+Garamond:wght@400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-  <link href="css/styles.css?v=2" rel="stylesheet" />
-  <script defer src="js/logger.js?v=2"></script>
-  <script defer src="js/utils.js?v=2"></script>
-  <script defer src="js/theming.js?v=2"></script>
-  <script defer src="js/constants.js?v=2"></script>
-  <script defer src="js/components.js?v=2"></script>
-  <script defer src="js/main.js?v=2"></script>
-  <script defer src="js/planet.js?v=2"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harpax — Antivirus for AI | Cambric AI</title>
+<meta name="description" content="Harpax monitors every action your AI coding assistant takes. Real-time protection, session summaries, zero telemetry. Download for Mac/Windows or install via CLI.">
+
+<!-- OG Tags -->
+<meta property="og:title" content="Harpax — Antivirus for AI | Cambric AI">
+<meta property="og:description" content="Harpax monitors every action your AI coding assistant takes. Real-time protection, session summaries, zero telemetry. Download for Mac/Windows or install via CLI.">
+<meta property="og:image" content="favicon.svg">
+<meta property="og:url" content="#">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.svg">
+
+<!-- Canonical -->
+<link rel="canonical" href="#">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
 </head>
-<body data-page="home">
-  <a class="skip-link" href="#main">Skip to content</a>
+<body>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">
-        <img src="assets/logo.svg" alt="Cambric AI" height="32" />
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Cambric<span> AI</span></a>
+  <div class="nav-links">
+    <a href="harpax.html">Harpax</a>
+    <a href="research.html">Research</a>
+    <a href="https://github.com/nullevent/harpax">Docs</a>
+    <a href="#" class="nav-dl">Download →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Harpax — AI Session Security</div>
+    <h1>Antivirus for AI.<br>Know what it touched.<br><em>Before it's too late.</em></h1>
+    <p class="hero-sub">
+      AI coding assistants are powerful — and unsupervised. Harpax watches every file accessed, every command run, every external call made, and stops anything it shouldn't be doing. For everyone who uses AI. Not just developers.
+    </p>
+
+    <!-- TWO-LANE CTA -->
+    <div class="lanes">
+
+      <!-- CONSUMER LANE -->
+      <div class="lane lane-consumer">
+        <div class="lane-tag">FOR EVERYONE</div>
+        <h3>Download Harpax</h3>
+        <p>One-click install. Runs quietly in the background. Protects your files and flags anything suspicious — no technical knowledge needed.</p>
+        <a href="#" class="btn-download">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Download for Mac / Windows
+        </a>
+        <div class="lane-price"><strong>$9 / month</strong> — 14-day free trial, cancel anytime</div>
+      </div>
+
+      <!-- DEV LANE -->
+      <div class="lane lane-dev">
+        <div class="lane-tag">FOR DEVELOPERS</div>
+        <h3>Install via CLI</h3>
+        <p>Full configuration control. YAML rules, custom detection tiers, webhook alerts, local-only data. Open source, self-hosted option available.</p>
+        <a href="https://github.com/nullevent/harpax" class="btn-cli">
+          View on GitHub →
+        </a>
+        <div class="lane-cmd">
+          <code>git clone github.com/nullevent/harpax && ./install.sh</code>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOR EVERYONE -->
+<section class="consumer-section">
+  <div class="section-label">// FOR EVERYONE WHO USES AI</div>
+
+  <div class="consumer-grid">
+    <div class="consumer-card">
+      <span class="cc-icon">&#x1F6E1;</span>
+      <div class="cc-title">File Protection</div>
+      <div class="cc-body">Harpax watches which files your AI tool accesses. You get an alert the moment it touches something it shouldn't — credentials, private documents, system files.</div>
+    </div>
+    <div class="consumer-card">
+      <span class="cc-icon">&#x1F4CB;</span>
+      <div class="cc-title">Session Summaries</div>
+      <div class="cc-body">After every AI session, Harpax gives you a plain-English summary of exactly what happened. No logs to parse. No technical knowledge needed.</div>
+    </div>
+    <div class="consumer-card">
+      <span class="cc-icon">&#x1F512;</span>
+      <div class="cc-title">Stays on Your Machine</div>
+      <div class="cc-body">Everything Harpax records stays local. No cloud upload, no telemetry, no data sharing. Your sessions are yours — export or delete them anytime.</div>
+    </div>
+    <div class="consumer-card">
+      <span class="cc-icon">&#x26A1;</span>
+      <div class="cc-title">Real-Time Blocking</div>
+      <div class="cc-body">When Harpax detects a dangerous action, it stops it before it runs. Not after. You choose what gets blocked and what just gets flagged.</div>
+    </div>
+    <div class="consumer-card">
+      <span class="cc-icon">&#x1F4B0;</span>
+      <div class="cc-title">Cost Visibility</div>
+      <div class="cc-body">See how much each AI session cost you in tokens and dollars. Know which tasks are worth it and where you're burning budget for nothing.</div>
+    </div>
+    <div class="consumer-card">
+      <span class="cc-icon">&#x1F514;</span>
+      <div class="cc-title">Instant Alerts</div>
+      <div class="cc-body">Desktop notifications the moment something worth knowing happens. No dashboard to check. Harpax tells you when it matters.</div>
+    </div>
+  </div>
+
+  <div class="consumer-bottom">
+    <div class="cb-left">
+      <h3>Simple, honest pricing.</h3>
+      <p>One plan. Everything included. No usage limits, no feature tiers, no gotchas. The CLI version is free and open source forever — the GUI is for everyone who'd rather just have it work.</p>
+      <a href="#" class="btn-download">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Start Free Trial
       </a>
-
-      <nav class="nav" aria-label="Primary">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu">
-          <span class="sr-only">Toggle menu</span>
-          &#9776;
-        </button>
-        <ul id="navMenu" class="nav-links">
-          <li class="nav-dropdown">
-            <a href="products.html">Products</a>
-            <div class="nav-dropdown-menu">
-              <a href="products.html">Overview</a>
-              <a href="harpax.html">Harpax</a>
-              <a href="revvit.html">Revvit</a>
-              <a href="quinte.html">Quinte</a>
-              <a href="store.html">Store</a>
-            </div>
-          </li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
     </div>
-  </header>
+    <div class="cb-right">
+      <div class="pricing-row"><span class="pr-label">14-day trial</span><span class="pr-val free">Free</span></div>
+      <div class="pricing-row"><span class="pr-label">Harpax GUI</span><span class="pr-val paid">$9 / month</span></div>
+      <div class="pricing-row"><span class="pr-label">Harpax CLI</span><span class="pr-val free">Free / open source</span></div>
+      <div class="pricing-row"><span class="pr-label">Data stays local</span><span class="pr-val free">Always</span></div>
+      <div class="pricing-row"><span class="pr-label">Session summaries</span><span class="pr-val">Both plans</span></div>
+      <div class="pricing-row"><span class="pr-label">Custom rules</span><span class="pr-val">CLI only</span></div>
+    </div>
+  </div>
+</section>
 
-  <!-- HERO — Text fades on scroll, static image below -->
-  <section class="hero">
-    <div class="stars"></div>
-
-    <div class="hero-content">
-      <a class="announce-pill" href="research.html">
-        Presenting at upcoming conferences <span class="arrow">&#8594;</span>
-      </a>
-      <h1>Visibility and control for the AI era.</h1>
-      <p class="lead">
-        Cambric AI builds tools that help organizations monitor, understand, and govern AI systems — from security posture to operational behavior to personality integration.
-      </p>
-      <div class="cta-row">
-        <a class="btn btn-primary btn-lg" href="products.html">Explore Products</a>
-        <a class="btn btn-ghost btn-lg" href="contact.html">Get in touch</a>
+<!-- SESSION TRACE -->
+<section class="trace-section">
+  <div class="section-label">// WHAT A SESSION LOOKS LIKE</div>
+  <div class="trace-window">
+    <div class="trace-titlebar">
+      <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+      <span>harpax — session sess_4f2a19c · claude-code · 14 min ago</span>
+    </div>
+    <div class="trace-body">
+      <div class="trace-line"><span class="ts">09:14:02</span><span class="tag read">READ</span><span class="tpath"><span class="dim">src/</span>auth/session.rb</span></div>
+      <div class="trace-line"><span class="ts">09:14:04</span><span class="tag read">READ</span><span class="tpath"><span class="dim">config/</span>database.yml</span></div>
+      <div class="trace-line"><span class="ts">09:14:07</span><span class="tag exec">EXEC</span><span class="tpath">bundle exec rails db:migrate</span></div>
+      <div class="trace-line"><span class="ts">09:14:22</span><span class="tag read">READ</span><span class="tpath"><span class="dim">config/</span><span class="hi">credentials.yml.enc</span></span></div>
+      <div class="trace-line"><span class="ts">09:14:23</span><span class="tag warn">WARN</span><span class="tpath"><span class="bad">credentials file accessed — sensitive_file_pattern</span></span></div>
+      <div class="trace-line"><span class="ts">09:14:45</span><span class="tag net">NET</span><span class="tpath"><span class="net">POST api.github.com</span><span class="dim"> /repos/… [200]</span></span></div>
+      <div class="trace-line"><span class="ts">09:14:46</span><span class="tag warn">BLOCK</span><span class="tpath"><span class="bad">external write blocked — severity: critical</span></span></div>
+      <div class="trace-line"><span class="ts">09:15:38</span><span class="tag ok">END</span><span class="tpath"><span class="dim">session complete · </span>2 warnings · 1 blocked · $0.34</span></div>
+      <div class="trace-stats">
+        <div class="stat"><span class="stat-n">847</span><span class="stat-l">FILE OPS</span></div>
+        <div class="stat"><span class="stat-n">23</span><span class="stat-l">COMMANDS</span></div>
+        <div class="stat"><span class="stat-n">2</span><span class="stat-l">WARNINGS</span></div>
+        <div class="stat"><span class="stat-n">1</span><span class="stat-l">BLOCKED</span></div>
+        <div class="stat"><span class="stat-n">$0.34</span><span class="stat-l">SESSION COST</span></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Governance visual — static, scrolls naturally with the page -->
-  <section class="hero-visual">
-    <div class="hero-framework-page">
-      <div class="fw-corner fw-tl"></div>
-      <div class="fw-corner fw-tr"></div>
-      <div class="fw-corner fw-bl"></div>
-      <div class="fw-corner fw-br"></div>
-      <svg viewBox="0 0 960 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI Governance Framework — Layered Intelligence Architecture">
-        <defs>
-          <style>
-            text { font-family: 'JetBrains Mono', monospace; }
-            .htit { font-family: 'EB Garamond', serif; font-size: 22px; font-weight: 400; }
-            .hsub { font-size: 7px; font-weight: 300; letter-spacing: .12em; }
-            .coreAI { font-family: 'EB Garamond', serif; font-size: 52px; font-weight: 500; }
-            .corelab { font-size: 5.5px; font-weight: 300; letter-spacing: .32em; }
-            .cn { font-size: 7px; font-weight: 300; letter-spacing: .08em; }
-            .ct { font-size: 11px; font-weight: 500; letter-spacing: .02em; }
-            .cs { font-size: 7.5px; font-weight: 300; letter-spacing: .01em; }
-            .al { font-size: 6.5px; font-weight: 300; letter-spacing: .24em; }
-            .foot { font-size: 6.5px; font-weight: 300; letter-spacing: .12em; }
-          </style>
-          <marker id="arr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
-            <path d="M0,.5L4.5,2.5L0,4.5Z" fill="#B8B4C4"/>
-          </marker>
-        </defs>
-        <!-- HEADER -->
-        <text x="52" y="54" class="htit" fill="#151A28">AI Governance Framework</text>
-        <text x="908" y="54" text-anchor="end" class="hsub" fill="#8A8890">// layered_intelligence_architecture — 2026</text>
-        <line x1="52" y1="63" x2="908" y2="63" stroke="#151A28" stroke-width=".9"/>
-        <!-- FOOTER -->
-        <line x1="52" y1="648" x2="908" y2="648" stroke="#C8C6D0" stroke-width=".6"/>
-        <text x="52" y="662" class="foot" fill="#AEACB8">AI Governance — Layered Intelligence Architecture</text>
-        <text x="908" y="662" text-anchor="end" class="foot" fill="#AEACB8">Confidential · Internal Use Only</text>
-        <!-- SPOKES -->
-        <line x1="480" y1="287" x2="480" y2="207" stroke="#C8C4D4" stroke-width=".8" marker-end="url(#arr)"/>
-        <line x1="558" y1="388" x2="630" y2="412" stroke="#C8C4D4" stroke-width=".8" marker-end="url(#arr)"/>
-        <line x1="413" y1="406" x2="343" y2="424" stroke="#C8C4D4" stroke-width=".8" marker-end="url(#arr)"/>
-        <line x1="534" y1="301" x2="650" y2="232" stroke="#C8C4D4" stroke-width=".7" stroke-dasharray="3 4" marker-end="url(#arr)"/>
-        <line x1="480" y1="443" x2="480" y2="568" stroke="#C8C4D4" stroke-width=".7" stroke-dasharray="3 4" marker-end="url(#arr)"/>
-        <line x1="426" y1="301" x2="311" y2="232" stroke="#C8C4D4" stroke-width=".7" stroke-dasharray="3 4" marker-end="url(#arr)"/>
-        <!-- OUTER ELLIPSE -->
-        <ellipse cx="480" cy="355" rx="278" ry="200" fill="none" stroke="#7060A8" stroke-width=".75" stroke-dasharray="3 7" opacity=".35"/>
-        <!-- MIDDLE ELLIPSE -->
-        <ellipse cx="480" cy="355" rx="192" ry="148" fill="none" stroke="#7060A8" stroke-width=".75" stroke-dasharray="2 5" opacity=".45"/>
-        <!-- INNER ELLIPSE -->
-        <ellipse cx="480" cy="355" rx="110" ry="88" fill="none" stroke="#151A28" stroke-width="1.1"/>
-        <!-- CORE -->
-        <circle cx="480" cy="355" r="68" fill="#0D1020"/>
-        <circle cx="480" cy="355" r="62" fill="none" stroke="#4A3C7A" stroke-width=".6" opacity=".4"/>
-        <text x="480" y="376" text-anchor="middle" class="coreAI" fill="#DDD9D2">AI</text>
-        <text x="480" y="393" text-anchor="middle" class="corelab" fill="#4A3C7A">CORE</text>
-        <!-- ARC LABELS -->
-        <path id="replArc" d="M 370,355 A 110,88 0 0,0 590,355" fill="none"/>
-        <text class="al" fill="#4A3C7A" opacity=".9"><textPath href="#replArc" startOffset="50%" text-anchor="middle">REPLICATION LAYER</textPath></text>
-        <path id="secArc" d="M 288,355 A 192,148 0 0,0 672,355" fill="none"/>
-        <text class="al" fill="#6050A0" opacity=".75"><textPath href="#secArc" startOffset="50%" text-anchor="middle">INFORMATION SECURITY INTELLIGENCE</textPath></text>
-        <path id="prodArc" d="M 202,355 A 278,200 0 0,0 758,355" fill="none"/>
-        <text class="al" fill="#504088" opacity=".6"><textPath href="#prodArc" startOffset="50%" text-anchor="middle">PRODUCT + OPERATIONS INTELLIGENCE</textPath></text>
-        <!-- S1 Monitor -->
-        <rect x="424" y="183" width="112" height="54" rx="2" fill="#F0EEE8" stroke="#1E1838" stroke-width="1"/>
-        <rect x="424" y="183" width="3" height="54" rx="1" fill="#2E2450"/>
-        <text x="436" y="199" class="cn" fill="#7060A8">S1</text>
-        <text x="436" y="215" class="ct" fill="#0D1020">Monitor</text>
-        <text x="436" y="228" class="cs" fill="#6A6878">session_activity</text>
-        <!-- S2 Detect -->
-        <rect x="632" y="390" width="112" height="54" rx="2" fill="#F0EEE8" stroke="#1E1838" stroke-width="1"/>
-        <rect x="632" y="390" width="3" height="54" rx="1" fill="#2E2450"/>
-        <text x="644" y="406" class="cn" fill="#7060A8">S2</text>
-        <text x="644" y="422" class="ct" fill="#0D1020">Detect</text>
-        <text x="644" y="435" class="cs" fill="#6A6878">threat_analysis</text>
-        <!-- S3 Enforce -->
-        <rect x="218" y="402" width="112" height="54" rx="2" fill="#141228" stroke="#2E2450" stroke-width="1"/>
-        <rect x="218" y="402" width="3" height="54" rx="1" fill="#4A3C7A"/>
-        <text x="230" y="418" class="cn" fill="#7060A8">S3</text>
-        <text x="230" y="434" class="ct" fill="#DDD9D2">Enforce</text>
-        <text x="230" y="447" class="cs" fill="#A090C8">block_or_log</text>
-        <!-- P1 Ingest -->
-        <rect x="660" y="210" width="112" height="54" rx="2" fill="#F0EEE8" stroke="#1E1838" stroke-width="1"/>
-        <rect x="660" y="210" width="3" height="54" rx="1" fill="#4A3C7A"/>
-        <text x="672" y="226" class="cn" fill="#7060A8">P1</text>
-        <text x="672" y="242" class="ct" fill="#0D1020">Ingest</text>
-        <text x="672" y="255" class="cs" fill="#6A6878">ticket + log_data</text>
-        <!-- P2 Classify -->
-        <rect x="424" y="570" width="112" height="54" rx="2" fill="#F0EEE8" stroke="#1E1838" stroke-width="1"/>
-        <rect x="424" y="570" width="3" height="54" rx="1" fill="#4A3C7A"/>
-        <text x="436" y="586" class="cn" fill="#7060A8">P2</text>
-        <text x="436" y="602" class="ct" fill="#0D1020">Classify</text>
-        <text x="436" y="615" class="cs" fill="#6A6878">trc + voc_tagging</text>
-        <!-- P3 Report -->
-        <rect x="188" y="210" width="112" height="54" rx="2" fill="#1E1838" stroke="#2E2450" stroke-width="1"/>
-        <rect x="188" y="210" width="3" height="54" rx="1" fill="#4A3C7A"/>
-        <text x="200" y="226" class="cn" fill="#7060A8">P3</text>
-        <text x="200" y="242" class="ct" fill="#DDD9D2">Report</text>
-        <text x="200" y="255" class="cs" fill="#A090C8">insights + export</text>
-      </svg>
+<!-- FOR DEVELOPERS -->
+<section class="dev-section">
+  <div class="section-label">// FOR DEVELOPERS — FULL CONTROL</div>
+  <div class="features-grid">
+    <div class="feature">
+      <div class="f-num">01</div>
+      <div class="f-title">Configurable Rules</div>
+      <div class="f-body">YAML-based rule definitions. Custom regex patterns, file path matchers, command blocklists. Your rules, your thresholds.</div>
     </div>
-    <p class="hero-visual-caption">Matching AI governance to your needs</p>
-  </section>
+    <div class="feature">
+      <div class="f-num">02</div>
+      <div class="f-title">Webhook Alerts</div>
+      <div class="f-body">Slack, Discord, or any HTTP endpoint. Get notified in your existing workflow, not another dashboard.</div>
+    </div>
+    <div class="feature">
+      <div class="f-num">03</div>
+      <div class="f-title">Data Export</div>
+      <div class="f-body">Export sessions as JSON, CSV, or markdown summaries. Pipe into your own tooling, SIEMs, or audit logs.</div>
+    </div>
+    <div class="feature">
+      <div class="f-num">04</div>
+      <div class="f-title">Self-Hosted</div>
+      <div class="f-body">No cloud dependency. No API key required for core functionality. Clone, build, run. MIT licensed.</div>
+    </div>
+    <div class="feature">
+      <div class="f-num">05</div>
+      <div class="f-title">Passive or Active</div>
+      <div class="f-body">Passive mode: log everything, block nothing. Active mode: enforce rules by severity in real time. Switch with one config line.</div>
+    </div>
+    <div class="feature">
+      <div class="f-num">06</div>
+      <div class="f-title">Semantic Detection</div>
+      <div class="f-body">Tier 2 embedding-based detection catches paraphrased attacks that regex misses. Optional ~100MB model download.</div>
+    </div>
+  </div>
+</section>
 
-  <!-- Umbra: dark → parchment -->
-  <div class="umbra-to-light"></div>
-
-  <!-- MAIN CONTENT — Parchment zone -->
-  <main id="main" class="light-content">
-    <section class="products-section section-pad">
-      <div class="container">
-        <header class="section-head">
-          <h2>Our products</h2>
-          <p class="muted">Three platforms that give you clarity over what your AI systems are doing and why.</p>
-        </header>
-
-        <div class="product-grid" id="product-cards"></div>
+<!-- DETECTION TIERS -->
+<section class="tiers-section">
+  <div class="section-label">// THREE-TIER DETECTION ENGINE</div>
+  <div class="tiers-layout">
+    <div>
+      <div class="tier-item">
+        <div class="tier-n">T1</div>
+        <div class="tier-text">
+          <h4>Pattern Matching <span class="tier-badge">&lt;1ms</span></h4>
+          <p>Fast regex detection catches known threat signatures instantly. On by default, no setup required.</p>
+        </div>
       </div>
-    </section>
-
-    <!-- MISSION -->
-    <section class="mission-section section-pad">
-      <div class="container mission-grid">
-        <div>
-          <h2>The governance layer for a world that runs on AI.</h2>
-        </div>
-        <div>
-          <p class="muted">
-            As AI systems become more autonomous and more integrated into critical operations, the organizations deploying them need better tools to understand what those systems are actually doing. That's what we build.
-          </p>
-          <p class="muted">
-            Today, that means security monitoring, operational analytics, and personality construct tooling. Tomorrow, it means the governance infrastructure for autonomous systems at scale.
-          </p>
+      <div class="tier-item">
+        <div class="tier-n">T2</div>
+        <div class="tier-text">
+          <h4>Semantic Similarity <span class="tier-badge">10–50ms</span></h4>
+          <p>AI embeddings catch paraphrased attacks that regex misses. One-time ~100MB model download. Optional.</p>
         </div>
       </div>
-    </section>
-
-  </main>
-
-  <!-- Umbra: parchment → dark -->
-  <div class="umbra-to-dark"></div>
-
-  <!-- CAPABILITIES — dark zone, hero-style -->
-  <section class="capabilities capabilities-dark section-pad">
-    <div class="container">
-      <div class="cap-grid">
-        <div class="cap-item reveal">
-          <h3>AI Security</h3>
-          <p>Continuous monitoring of your AI systems' security posture. Know when something is wrong before it becomes a problem.</p>
-        </div>
-        <div class="cap-item reveal">
-          <h3>Operational Analytics</h3>
-          <p>Understand the behavioral patterns in your business operations. Surface the insights that matter from complex, real-time data.</p>
-        </div>
-        <div class="cap-item reveal">
-          <h3>AI Governance</h3>
-          <p>The tooling and research to make autonomous systems accountable, auditable, and aligned — as they scale.</p>
+      <div class="tier-item">
+        <div class="tier-n">T3</div>
+        <div class="tier-text">
+          <h4>LLM Analysis <span class="tier-badge">Roadmap</span></h4>
+          <p>Full LLM-powered threat analysis for sophisticated edge cases. Requires API key.</p>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- CTA — dark zone -->
-  <section class="cta-bottom section-pad">
-    <div class="container">
-      <h2>Ready to learn more?</h2>
-      <p class="muted">See how Cambric AI can give you visibility and control over your AI systems.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary btn-lg" href="contact.html">Contact Us</a>
-        <a class="btn btn-ghost btn-lg" href="research.html">View Research</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="brand-row">
-          <img src="assets/logo.svg" alt="" height="24" />
-        </div>
-        <p class="muted" style="font-size:.9rem">Visibility and control for AI systems.</p>
-        <div class="social-links">
-          <a href="#" aria-label="LinkedIn">LinkedIn</a>
-          <a href="#" aria-label="Twitter">X</a>
-          <a href="#" aria-label="GitHub">GitHub</a>
+    <div>
+      <div class="config-card">
+        <div class="config-head">// ACTIVE MODE CONFIG</div>
+        <div class="config-body">
+          <div class="config-row"><span class="ck">protection.mode</span><span class="cv">active</span></div>
+          <div class="config-row"><span class="ck">severity.critical</span><span class="cv block">block</span></div>
+          <div class="config-row"><span class="ck">severity.high</span><span class="cv warn2">warn</span></div>
+          <div class="config-row"><span class="ck">severity.medium</span><span class="cv log">log</span></div>
+          <div class="config-row"><span class="ck">tier2.enabled</span><span class="cv">false</span></div>
+          <div class="config-row"><span class="ck">cost.warning_threshold</span><span class="cv">$5.00</span></div>
+          <div class="config-row"><span class="ck">retention.max_age_days</span><span class="cv">30</span></div>
         </div>
       </div>
-      <nav aria-label="Footer">
-        <ul class="footer-links">
-          <li><a href="products.html">Products</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="testimonials.html">Testimonials</a></li>
-          <li><a href="store.html">Store</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="footer-meta">
-        <p>&#169; <span id="year"></span> Cambric AI. All rights reserved.</p>
-        <p><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a></p>
-      </div>
     </div>
-  </footer>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Start protecting your AI sessions today.</h2>
+  <p>14-day free trial. No credit card required. Works in under two minutes.</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-p">Download Harpax — Free Trial</a>
+    <a href="https://github.com/nullevent/harpax" class="btn-g">CLI on GitHub →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Cambric AI</a>
+  <div class="footer-links">
+    <a href="harpax.html">Harpax</a>
+    <a href="https://github.com/nullevent/harpax">Docs</a>
+    <a href="research.html">Research</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <span class="footer-note">&copy; 2026 Cambric AI &middot; All session data stays local</span>
+</footer>
+
 </body>
 </html>

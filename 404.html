@@ -1,86 +1,82 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Page Not Found — Cambric AI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-  <link href="css/styles.css?v=2" rel="stylesheet" />
-  <script defer src="js/logger.js?v=2"></script>
-  <script defer src="js/utils.js?v=2"></script>
-  <script defer src="js/theming.js?v=2"></script>
-  <script defer src="js/main.js?v=2"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Cambric AI</title>
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.svg">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+
+<style>
+  .error-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 140px 48px 100px;
+  }
+  .error-page h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: 72px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+  .error-page p {
+    font-size: 12px;
+    color: var(--cream3);
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 860px) {
+    .error-page { padding: 120px 24px 72px; }
+  }
+</style>
 </head>
-<body data-page="404">
-  <a class="skip-link" href="#main">Skip to content</a>
+<body>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Cambric AI" height="32" /></a>
-      <nav class="nav" aria-label="Primary">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
-        <ul id="navMenu" class="nav-links">
-          <li class="nav-dropdown">
-            <a href="products.html">Products</a>
-            <div class="nav-dropdown-menu">
-              <a href="products.html">Overview</a>
-              <a href="harpax.html">Harpax</a>
-              <a href="revvit.html">Revvit</a>
-              <a href="quinte.html">Quinte</a>
-              <a href="store.html">Store</a>
-            </div>
-          </li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Cambric<span> AI</span></a>
+  <div class="nav-links">
+    <a href="harpax.html">Harpax</a>
+    <a href="research.html">Research</a>
+    <a href="https://github.com/nullevent/harpax">Docs</a>
+    <a href="#" class="nav-dl">Download →</a>
+  </div>
+</nav>
 
-  <main id="main" class="error-page">
-    <div class="container">
-      <h1>404</h1>
-      <h2>Page not found</h2>
-      <p class="muted">The page you're looking for doesn't exist or has been moved.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary btn-lg" href="index.html">Go Home</a>
-        <a class="btn btn-ghost btn-lg" href="contact.html">Contact Us</a>
-      </div>
-    </div>
-  </main>
+<!-- 404 -->
+<section class="error-page">
+  <h1>404</h1>
+  <p>Page not found.</p>
+  <a href="index.html" class="btn-g">&larr; Back to home</a>
+</section>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="brand-row"><img src="assets/logo.svg" alt="" height="24" /></div>
-        <p class="muted" style="font-size:.9rem">Visibility and control for AI systems.</p>
-        <div class="social-links">
-          <a href="#" aria-label="LinkedIn">LinkedIn</a>
-          <a href="#" aria-label="Twitter">X</a>
-          <a href="#" aria-label="GitHub">GitHub</a>
-        </div>
-      </div>
-      <nav aria-label="Footer">
-        <ul class="footer-links">
-          <li><a href="products.html">Products</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="testimonials.html">Testimonials</a></li>
-          <li><a href="store.html">Store</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="footer-meta">
-        <p>&#169; <span id="year"></span> Cambric AI. All rights reserved.</p>
-        <p><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a></p>
-      </div>
-    </div>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="footer-logo">Cambric AI</a>
+  <div class="footer-links">
+    <a href="harpax.html">Harpax</a>
+    <a href="https://github.com/nullevent/harpax">Docs</a>
+    <a href="research.html">Research</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <span class="footer-note">&copy; 2026 Cambric AI &middot; All session data stays local</span>
+</footer>
+
 </body>
 </html>

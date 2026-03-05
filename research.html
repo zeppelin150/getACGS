@@ -1,131 +1,171 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Research — Cambric AI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Cambric AI research in AI security, operational analytics, neural architectures, and AI governance." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-  <link href="css/styles.css?v=2" rel="stylesheet" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script defer src="js/logger.js?v=2"></script>
-  <script defer src="js/utils.js?v=2"></script>
-  <script defer src="js/theming.js?v=2"></script>
-  <script defer src="js/main.js?v=2"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Cambric AI</title>
+<meta name="description" content="AI governance research, conference presentations, and the Layered Intelligence Architecture framework.">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.svg">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+
+<style>
+  /* Research page styles */
+  .research-hero {
+    padding: 140px 48px 60px;
+  }
+  .research-hero h1 {
+    max-width: 600px;
+  }
+  .research-hero .hero-sub {
+    font-size: 13px;
+    color: var(--cream2);
+    max-width: 580px;
+    line-height: 1.72;
+    font-weight: 300;
+  }
+
+  .research-section {
+    padding: 64px 48px;
+    border-top: 1px solid var(--border);
+  }
+
+  .research-card {
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    padding: 24px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+  }
+  .research-card .rc-event {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+  .research-card .rc-date {
+    font-size: 9px;
+    font-weight: 300;
+    color: var(--cream3);
+    letter-spacing: .08em;
+    margin-bottom: 12px;
+  }
+  .research-card .rc-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .research-card .rc-abstract {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--cream3);
+    line-height: 1.65;
+  }
+
+  .framework-section h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 20px;
+  }
+  .framework-section p {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--cream3);
+    line-height: 1.72;
+    max-width: 680px;
+    margin-bottom: 18px;
+  }
+  .framework-section .btn-g {
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+  .framework-section .framework-note {
+    font-size: 9px;
+    font-weight: 300;
+    color: var(--cream3);
+    letter-spacing: .04em;
+  }
+
+  @media (max-width: 860px) {
+    .research-hero { padding: 120px 24px 48px; }
+    .research-section { padding: 48px 24px; }
+  }
+</style>
 </head>
-<body data-page="research">
-  <a class="skip-link" href="#main">Skip to content</a>
+<body>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Cambric AI" height="32" /></a>
-      <nav class="nav" aria-label="Primary">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
-        <ul id="navMenu" class="nav-links">
-          <li class="nav-dropdown">
-            <a href="products.html">Products</a>
-            <div class="nav-dropdown-menu">
-              <a href="products.html">Overview</a>
-              <a href="harpax.html">Harpax</a>
-              <a href="revvit.html">Revvit</a>
-              <a href="quinte.html">Quinte</a>
-              <a href="store.html">Store</a>
-            </div>
-          </li>
-          <li><a class="active" href="research.html">Research</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <div class="page-header">
-    <div class="container">
-      <h1>Research</h1>
-      <p class="muted lead">Our work in AI security, operational analytics, and AI governance.</p>
-    </div>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Cambric<span> AI</span></a>
+  <div class="nav-links">
+    <a href="harpax.html">Harpax</a>
+    <a href="research.html">Research</a>
+    <a href="https://github.com/nullevent/harpax">Docs</a>
+    <a href="#" class="nav-dl">Download →</a>
   </div>
+</nav>
 
-  <div class="umbra-to-light"></div>
+<!-- HERO -->
+<section class="research-hero">
+  <h1>Research + Governance.</h1>
+  <p class="hero-sub">Our research focuses on three areas: AI session security, behavioral governance for autonomous systems, and accountability infrastructure for AI at scale.</p>
+</section>
 
-  <main id="main" class="light-content">
-    <div class="container section-pad">
-      <div class="entries">
+<!-- CONFERENCE PRESENTATIONS -->
+<section class="research-section">
+  <div class="section-label">// CONFERENCE PRESENTATIONS</div>
+  <div class="research-card">
+    <div class="rc-event">EVENT_NAME</div>
+    <div class="rc-date">DATE</div>
+    <div class="rc-title">TALK_TITLE</div>
+    <div class="rc-abstract">ABSTRACT</div>
+  </div>
+</section>
 
-        <article class="entry reveal">
-          <div class="entry-date">Coming 2025</div>
-          <div class="entry-content">
-            <h3><a href="#">Conference Presentations</a></h3>
-            <p>Cambric AI will be presenting research at upcoming conferences. Details on topics, dates, and publications will be shared here.</p>
-            <span class="entry-tag">Conference</span>
-          </div>
-        </article>
+<!-- AI GOVERNANCE FRAMEWORK -->
+<section class="research-section framework-section">
+  <div class="section-label">// AI GOVERNANCE FRAMEWORK</div>
+  <h2>Layered Intelligence Architecture</h2>
+  <p>The framework defines three concentric governance layers: the Replication Layer (core AI behavioral boundaries), Information Security Intelligence (threat detection and session monitoring), and Product + Operations Intelligence (business-level analytics and compliance).</p>
+  <p>Each layer operates independently but shares context upward. Harpax currently implements the Information Security Intelligence layer.</p>
+  <a href="#" class="btn-g">Download Framework (SVG) →</a>
+  <div class="framework-note">Available for use with attribution. CC BY 4.0.</div>
+</section>
 
-        <article class="entry reveal">
-          <div class="entry-date">Ongoing</div>
-          <div class="entry-content">
-            <h3><a href="#">Adaptive AI Security Monitoring</a></h3>
-            <p>Research into environment-aware security models that continuously learn baseline behavior to detect vulnerabilities and anomalies in AI workloads.</p>
-            <span class="entry-tag">AI Security</span>
-          </div>
-        </article>
+<!-- WRITING -->
+<section class="research-section">
+  <div class="section-label">// WRITING</div>
+  <div class="research-card">
+    <div class="rc-event">TITLE</div>
+    <div class="rc-date">DATE</div>
+    <div class="rc-abstract">SUMMARY</div>
+  </div>
+</section>
 
-        <article class="entry reveal">
-          <div class="entry-date">Ongoing</div>
-          <div class="entry-content">
-            <h3><a href="#">Operational Pattern Analytics</a></h3>
-            <p>Frameworks for surfacing meaningful behavioral patterns from complex, multi-source business data — and making those insights actionable.</p>
-            <span class="entry-tag">Analytics</span>
-          </div>
-        </article>
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Cambric AI</a>
+  <div class="footer-links">
+    <a href="harpax.html">Harpax</a>
+    <a href="https://github.com/nullevent/harpax">Docs</a>
+    <a href="research.html">Research</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <span class="footer-note">&copy; 2026 Cambric AI &middot; All session data stays local</span>
+</footer>
 
-        <article class="entry reveal">
-          <div class="entry-date">Ongoing</div>
-          <div class="entry-content">
-            <h3><a href="#">Personality Construct Integration</a></h3>
-            <p>Research into dynamic neural network architectures and personality constructs — building the governance layer for how AI systems behave.</p>
-            <span class="entry-tag">AI Governance</span>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </main>
-
-  <div class="umbra-to-dark"></div>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="brand-row">
-          <img src="assets/logo.svg" alt="" height="24" />
-        </div>
-        <p class="muted" style="font-size:.9rem">Visibility and control for AI systems.</p>
-        <div class="social-links">
-          <a href="#" aria-label="LinkedIn">LinkedIn</a>
-          <a href="#" aria-label="Twitter">X</a>
-          <a href="#" aria-label="GitHub">GitHub</a>
-        </div>
-      </div>
-      <nav aria-label="Footer">
-        <ul class="footer-links">
-          <li><a href="products.html">Products</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="testimonials.html">Testimonials</a></li>
-          <li><a href="store.html">Store</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="footer-meta">
-        <p>&#169; <span id="year"></span> Cambric AI. All rights reserved.</p>
-        <p><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a></p>
-      </div>
-    </div>
-  </footer>
 </body>
 </html>

@@ -1,123 +1,487 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Harpax — Continuous AI Security — Cambric AI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Harpax: Continuous AI security monitoring. Proactive vulnerability detection and anomaly alerting for AI systems." />
-  <meta property="og:title" content="Harpax — Continuous AI Security — Cambric AI" />
-  <meta property="og:description" content="Proactive security monitoring for AI systems." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="favicon.svg" />
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-  <link href="css/styles.css?v=2" rel="stylesheet" />
-  <script defer src="js/logger.js?v=2"></script>
-  <script defer src="js/utils.js?v=2"></script>
-  <script defer src="js/theming.js?v=2"></script>
-  <script defer src="js/constants.js?v=2"></script>
-  <script defer src="js/components.js?v=2"></script>
-  <script defer src="js/main.js?v=2"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harpax — Full Documentation | Cambric AI</title>
+<meta name="description" content="Complete documentation and setup guide for Harpax — AI session security for Claude Code. Installation, configuration, CLI reference.">
+
+<!-- OG Tags -->
+<meta property="og:title" content="Harpax — Full Documentation | Cambric AI">
+<meta property="og:description" content="Complete documentation and setup guide for Harpax — AI session security for Claude Code. Installation, configuration, CLI reference.">
+<meta property="og:image" content="favicon.svg">
+<meta property="og:url" content="#">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.svg">
+
+<!-- Canonical -->
+<link rel="canonical" href="#">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+
+<style>
+/* ── Harpax docs-depth page additions ── */
+
+/* HOW IT WORKS — row of 3 steps */
+.steps-section {
+  padding: 88px 48px;
+  border-top: 1px solid var(--border);
+}
+.steps-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.step {
+  background: var(--bg);
+  padding: 32px 28px;
+  transition: background .2s;
+}
+.step:hover { background: var(--surface); }
+.step .f-num {
+  font-size: 22px;
+  font-family: 'EB Garamond', serif;
+  color: var(--purple);
+  margin-bottom: 14px;
+  letter-spacing: 0;
+}
+.step .f-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+.step .f-body {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--cream3);
+  line-height: 1.7;
+}
+
+/* INSTALL section — lane requirements */
+.install-section {
+  padding: 88px 48px;
+  border-top: 1px solid var(--border);
+  background: var(--bg2);
+}
+.install-section .lanes {
+  max-width: 100%;
+}
+.lane-reqs {
+  margin-top: 16px;
+  font-size: 9.5px;
+  color: var(--cream3);
+  line-height: 1.8;
+  letter-spacing: .03em;
+}
+.lane-reqs span {
+  display: block;
+}
+
+/* FEATURE BREAKDOWN — dev-section reuse */
+.feature-breakdown {
+  padding: 88px 48px;
+  border-top: 1px solid var(--border);
+}
+
+/* DETECTION TIERS — expanded */
+.tiers-expanded .tier-note {
+  margin-top: 8px;
+  font-size: 9.5px;
+  color: var(--cream3);
+  line-height: 1.6;
+}
+.tiers-expanded .tier-note a {
+  color: var(--purple3);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.tiers-expanded .tier-note a:hover {
+  color: var(--cream);
+}
+
+/* CONFIGURATION section — 3 cards side by side */
+.config-section {
+  padding: 88px 48px;
+  border-top: 1px solid var(--border);
+  background: var(--bg2);
+}
+.config-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.config-grid .config-card {
+  position: static;
+}
+
+/* CLI REFERENCE section */
+.cli-section {
+  padding: 88px 48px;
+  border-top: 1px solid var(--border);
+}
+.cli-table {
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  max-width: 800px;
+}
+.cli-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  background: var(--bg2);
+  transition: background .2s;
+  gap: 24px;
+}
+.cli-row:last-child { border-bottom: none; }
+.cli-row:hover { background: var(--surface); }
+.cli-cmd {
+  color: var(--purple3);
+  font-weight: 500;
+  white-space: nowrap;
+  letter-spacing: .03em;
+  min-width: 220px;
+}
+.cli-desc {
+  color: var(--cream3);
+  font-weight: 300;
+  flex: 1;
+}
+
+/* ── Responsive additions ── */
+@media (max-width: 860px) {
+  .steps-section { padding: 64px 24px; }
+  .steps-row { grid-template-columns: 1fr; }
+
+  .install-section { padding: 64px 24px; }
+
+  .feature-breakdown { padding: 64px 24px; }
+
+  .config-section { padding: 64px 24px; }
+  .config-grid { grid-template-columns: 1fr; }
+
+  .cli-section { padding: 64px 24px; }
+  .cli-row { flex-direction: column; gap: 6px; }
+  .cli-cmd { min-width: unset; }
+}
+</style>
 </head>
-<body data-page="harpax">
-  <a class="skip-link" href="#main">Skip to content</a>
+<body>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Cambric AI" height="32" /></a>
-      <nav class="nav" aria-label="Primary">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
-        <ul id="navMenu" class="nav-links">
-          <li class="nav-dropdown">
-            <a class="active" href="products.html">Products</a>
-            <div class="nav-dropdown-menu">
-              <a href="products.html">Overview</a>
-              <a href="harpax.html">Harpax</a>
-              <a href="revvit.html">Revvit</a>
-              <a href="quinte.html">Quinte</a>
-              <a href="store.html">Store</a>
-            </div>
-          </li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <div class="page-header product-hero">
-    <div class="container" id="product-hero-content"></div>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Cambric<span> AI</span></a>
+  <div class="nav-links">
+    <a href="harpax.html">Harpax</a>
+    <a href="research.html">Research</a>
+    <a href="https://github.com/nullevent/harpax">Docs</a>
+    <a href="#" class="nav-dl">Download →</a>
   </div>
+</nav>
 
-  <div class="umbra-to-light"></div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Harpax — Full Documentation</div>
+    <h1>Antivirus for AI.<br>Full visibility, <em>real-time control.</em></h1>
+    <p class="hero-sub">
+      Harpax monitors every action your AI coding assistant takes — files, commands, network calls — and gives you complete session-by-session visibility with configurable protection.
+    </p>
 
-  <main id="main" class="light-content">
-    <section class="product-detail-section section-pad">
-      <div class="container">
-        <h2>About Harpax</h2>
-        <p id="product-description" class="lead" style="max-width:720px"></p>
+    <!-- TWO-LANE CTA -->
+    <div class="lanes">
+
+      <!-- CONSUMER LANE -->
+      <div class="lane lane-consumer">
+        <div class="lane-tag">FOR EVERYONE</div>
+        <h3>Download Harpax</h3>
+        <p>One-click install. Runs quietly in the background. Protects your files and flags anything suspicious — no technical knowledge needed.</p>
+        <a href="#" class="btn-download">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Download for Mac / Windows
+        </a>
+        <div class="lane-price"><strong>$9 / month</strong> — 14-day free trial, cancel anytime</div>
       </div>
-    </section>
 
-    <section class="product-detail-section section-pad">
-      <div class="container">
-        <h2>Features</h2>
-        <div class="feature-grid" id="product-features"></div>
-      </div>
-    </section>
-
-    <section class="product-detail-section section-pad">
-      <div class="container">
-        <h2>Pricing</h2>
-        <div class="pricing-grid" id="product-pricing"></div>
-      </div>
-    </section>
-
-    <section class="product-detail-section section-pad" style="text-align:center">
-      <div class="container">
-        <h2>Ready to secure your AI systems?</h2>
-        <p class="muted">Get started with Harpax today.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary btn-lg" href="contact.html">Contact Sales</a>
-          <a class="btn btn-ghost btn-lg" href="store.html">View in Store</a>
+      <!-- DEV LANE -->
+      <div class="lane lane-dev">
+        <div class="lane-tag">FOR DEVELOPERS</div>
+        <h3>Install via CLI</h3>
+        <p>Full configuration control. YAML rules, custom detection tiers, webhook alerts, local-only data. Open source, self-hosted option available.</p>
+        <a href="https://github.com/nullevent/harpax" class="btn-cli">
+          View on GitHub →
+        </a>
+        <div class="lane-cmd">
+          <code>git clone github.com/nullevent/harpax && ./install.sh</code>
         </div>
       </div>
-    </section>
-  </main>
 
-  <div class="umbra-to-dark"></div>
+    </div>
+  </div>
+</section>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="brand-row"><img src="assets/logo.svg" alt="" height="24" /></div>
-        <p class="muted" style="font-size:.9rem">Visibility and control for AI systems.</p>
-        <div class="social-links">
-          <a href="#" aria-label="LinkedIn">LinkedIn</a>
-          <a href="#" aria-label="Twitter">X</a>
-          <a href="#" aria-label="GitHub">GitHub</a>
-        </div>
-      </div>
-      <nav aria-label="Footer">
-        <ul class="footer-links">
-          <li><a href="products.html">Products</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="testimonials.html">Testimonials</a></li>
-          <li><a href="store.html">Store</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="footer-meta">
-        <p>&#169; <span id="year"></span> Cambric AI. All rights reserved.</p>
-        <p><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a></p>
+<!-- QUICK INSTALL -->
+<section class="install-section">
+  <div class="section-label">// QUICK INSTALL</div>
+  <div class="lanes" style="max-width:100%;">
+
+    <!-- GUI INSTALL -->
+    <div class="lane lane-consumer">
+      <div class="lane-tag">GUI</div>
+      <h3>Download for Mac / Windows</h3>
+      <p>Graphical installer. No terminal, no dependencies. Runs as a background service and launches on startup.</p>
+      <a href="#" class="btn-download">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Download Installer
+      </a>
+      <div class="lane-reqs">
+        <span>macOS 12+ / Windows 10+</span>
+        <span>50 MB disk space</span>
       </div>
     </div>
-  </footer>
+
+    <!-- CLI INSTALL -->
+    <div class="lane lane-dev">
+      <div class="lane-tag">CLI</div>
+      <h3>Install via Terminal</h3>
+      <p>Clone, build, and configure from source. Full access to YAML rules, detection tiers, and export tooling.</p>
+      <div class="lane-cmd" style="margin-top:0;margin-bottom:16px;">
+        <code>git clone github.com/nullevent/harpax && cd harpax && go build ./...</code>
+      </div>
+      <a href="https://github.com/nullevent/harpax" class="btn-cli">
+        View on GitHub →
+      </a>
+      <div class="lane-reqs">
+        <span>Go 1.21+</span>
+        <span>Claude Code with hooks enabled</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="steps-section">
+  <div class="section-label">// HOW IT WORKS</div>
+  <div class="steps-row">
+    <div class="step">
+      <div class="f-num">01</div>
+      <div class="f-title">Install</div>
+      <div class="f-body">One-click GUI install or git clone for developers. Under two minutes either way.</div>
+    </div>
+    <div class="step">
+      <div class="f-num">02</div>
+      <div class="f-title">Monitor</div>
+      <div class="f-body">Harpax watches every file access, command execution, and network call your AI makes. Real-time.</div>
+    </div>
+    <div class="step">
+      <div class="f-num">03</div>
+      <div class="f-title">Review</div>
+      <div class="f-body">Session summaries, cost tracking, exportable logs. Know what happened and what it cost.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL FEATURE BREAKDOWN -->
+<section class="feature-breakdown" style="background:var(--bg2);">
+  <div class="section-label">// FULL FEATURE BREAKDOWN</div>
+  <div class="features-grid">
+    <div class="feature">
+      <div class="f-num">01</div>
+      <div class="f-title">Session Visibility</div>
+      <div class="f-body">Every AI session is logged with a full timeline of actions — file reads, writes, command executions, and network calls. Browse sessions individually, search by date or severity, and drill into any event for full context. Nothing your AI does goes unrecorded.</div>
+    </div>
+    <div class="feature">
+      <div class="f-num">02</div>
+      <div class="f-title">Real-Time Protection</div>
+      <div class="f-body">Two modes. Passive mode logs every action without interference — ideal for auditing. Active mode enforces your rules in real time, blocking critical actions before they execute and warning on anything flagged. Switch between modes with a single config line.</div>
+    </div>
+    <div class="feature">
+      <div class="f-num">03</div>
+      <div class="f-title">Cost Tracking</div>
+      <div class="f-body">Every session records token usage and dollar cost. Set warning thresholds to catch runaway sessions before they drain your budget. See cost-per-session, cost-per-day, and cumulative spend over any time range.</div>
+    </div>
+    <div class="feature">
+      <div class="f-num">04</div>
+      <div class="f-title">AI Summaries</div>
+      <div class="f-body">After every session, Harpax generates a plain-English summary of what happened, what was flagged, and what was blocked. Export summaries as Markdown, HTML, CSV, or JSON. Feed them into your own tooling or compliance workflows.</div>
+    </div>
+    <div class="feature">
+      <div class="f-num">05</div>
+      <div class="f-title">Multi-Channel Alerts</div>
+      <div class="f-body">Get notified the moment something important happens. Desktop notifications out of the box. Configure webhooks for Slack, Discord, email, or any HTTP endpoint. Filter alert triggers by severity so you only hear about what matters.</div>
+    </div>
+    <div class="feature">
+      <div class="f-num">06</div>
+      <div class="f-title">Stays Local</div>
+      <div class="f-body">Zero telemetry. Zero cloud dependency. All session data lives in ~/.harpax on your machine. No API calls home, no usage tracking, no data sharing. Export or delete your data anytime — you own it completely.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DETECTION TIERS -->
+<section class="tiers-section tiers-expanded">
+  <div class="section-label">// THREE-TIER DETECTION ENGINE</div>
+  <div class="tiers-layout">
+    <div>
+      <div class="tier-item">
+        <div class="tier-n">T1</div>
+        <div class="tier-text">
+          <h4>Pattern Matching <span class="tier-badge">&lt;1ms</span></h4>
+          <p>Fast regex-based detection against known threat signatures. Catches credential access, dangerous shell commands, suspicious file patterns, and known exfiltration vectors. On by default, no setup required. Rules are defined in YAML and fully customizable.</p>
+        </div>
+      </div>
+      <div class="tier-item">
+        <div class="tier-n">T2</div>
+        <div class="tier-text">
+          <h4>Semantic Similarity <span class="tier-badge">10–50ms</span></h4>
+          <p>AI embedding-based detection catches paraphrased and obfuscated attacks that regex misses. Compares AI actions against a library of known-bad patterns using vector similarity. Runs locally — no API calls.</p>
+          <div class="tier-note">Requires a one-time ~100MB model download. Disabled by default. <a href="https://github.com/nullevent/harpax">See ADVANCED.md on GitHub</a></div>
+        </div>
+      </div>
+      <div class="tier-item">
+        <div class="tier-n">T3</div>
+        <div class="tier-text">
+          <h4>LLM Analysis <span class="tier-badge">Roadmap</span></h4>
+          <p>Full LLM-powered threat analysis for sophisticated, context-dependent edge cases. Will route flagged sessions through an LLM for deeper reasoning about intent and risk. Requires an API key. Coming soon.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="config-card">
+        <div class="config-head">// ACTIVE MODE CONFIG</div>
+        <div class="config-body">
+          <div class="config-row"><span class="ck">protection.mode</span><span class="cv">active</span></div>
+          <div class="config-row"><span class="ck">severity.critical</span><span class="cv block">block</span></div>
+          <div class="config-row"><span class="ck">severity.high</span><span class="cv warn2">warn</span></div>
+          <div class="config-row"><span class="ck">severity.medium</span><span class="cv log">log</span></div>
+          <div class="config-row"><span class="ck">tier2.enabled</span><span class="cv">true</span></div>
+          <div class="config-row"><span class="ck">tier2.model_path</span><span class="cv">~/.harpax/models/</span></div>
+          <div class="config-row"><span class="ck">cost.warning_threshold</span><span class="cv">$5.00</span></div>
+          <div class="config-row"><span class="ck">retention.max_age_days</span><span class="cv">30</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIGURATION EXAMPLES -->
+<section class="config-section">
+  <div class="section-label">// CONFIGURATION EXAMPLES</div>
+  <div class="config-grid">
+
+    <div class="config-card">
+      <div class="config-head">// basic.yaml</div>
+      <div class="config-body">
+        <div class="config-row"><span class="ck">protection.mode</span><span class="cv">passive</span></div>
+        <div class="config-row"><span class="ck">severity.critical</span><span class="cv warn2">warn</span></div>
+        <div class="config-row"><span class="ck">tier2.enabled</span><span class="cv">false</span></div>
+        <div class="config-row"><span class="ck">retention.max_age_days</span><span class="cv">30</span></div>
+      </div>
+    </div>
+
+    <div class="config-card">
+      <div class="config-head">// hardened.yaml</div>
+      <div class="config-body">
+        <div class="config-row"><span class="ck">protection.mode</span><span class="cv">active</span></div>
+        <div class="config-row"><span class="ck">severity.critical</span><span class="cv block">block</span></div>
+        <div class="config-row"><span class="ck">severity.high</span><span class="cv warn2">warn</span></div>
+        <div class="config-row"><span class="ck">tier2.enabled</span><span class="cv">true</span></div>
+        <div class="config-row"><span class="ck">cost.warning_threshold</span><span class="cv">$2.00</span></div>
+      </div>
+    </div>
+
+    <div class="config-card">
+      <div class="config-head">// optimized.yaml</div>
+      <div class="config-body">
+        <div class="config-row"><span class="ck">protection.mode</span><span class="cv">active</span></div>
+        <div class="config-row"><span class="ck">severity.critical</span><span class="cv block">block</span></div>
+        <div class="config-row"><span class="ck">tier2.enabled</span><span class="cv">false</span></div>
+        <div class="config-row"><span class="ck">retention.max_age_days</span><span class="cv">7</span></div>
+        <div class="config-row"><span class="ck">cost.warning_threshold</span><span class="cv">$5.00</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLI REFERENCE -->
+<section class="cli-section">
+  <div class="section-label">// CLI COMMANDS</div>
+  <div class="cli-table">
+    <div class="cli-row">
+      <span class="cli-cmd">harpax start</span>
+      <span class="cli-desc">Start monitoring the current session</span>
+    </div>
+    <div class="cli-row">
+      <span class="cli-cmd">harpax stop</span>
+      <span class="cli-desc">Stop monitoring</span>
+    </div>
+    <div class="cli-row">
+      <span class="cli-cmd">harpax show [session_id]</span>
+      <span class="cli-desc">Display session details</span>
+    </div>
+    <div class="cli-row">
+      <span class="cli-cmd">harpax list</span>
+      <span class="cli-desc">List recent sessions</span>
+    </div>
+    <div class="cli-row">
+      <span class="cli-cmd">harpax export [session_id]</span>
+      <span class="cli-desc">Export session (json/csv/md)</span>
+    </div>
+    <div class="cli-row">
+      <span class="cli-cmd">harpax config</span>
+      <span class="cli-desc">Show current configuration</span>
+    </div>
+    <div class="cli-row">
+      <span class="cli-cmd">harpax rules</span>
+      <span class="cli-desc">List active detection rules</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Start protecting your AI sessions today.</h2>
+  <p>14-day free trial. No credit card required. Works in under two minutes.</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-p">Download Harpax — Free Trial</a>
+    <a href="https://github.com/nullevent/harpax" class="btn-g">CLI on GitHub →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="footer-logo">Cambric AI</a>
+  <div class="footer-links">
+    <a href="harpax.html">Harpax</a>
+    <a href="https://github.com/nullevent/harpax">Docs</a>
+    <a href="research.html">Research</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <span class="footer-note">&copy; 2026 Cambric AI &middot; All session data stays local</span>
+</footer>
+
 </body>
 </html>

@@ -1,128 +1,156 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>About — Cambric AI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Cambric AI builds tools that give organizations visibility and control over AI systems — from security to analytics to governance." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-  <link href="css/styles.css?v=2" rel="stylesheet" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script defer src="js/logger.js?v=2"></script>
-  <script defer src="js/utils.js?v=2"></script>
-  <script defer src="js/theming.js?v=2"></script>
-  <script defer src="js/main.js?v=2"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Cambric AI</title>
+<meta name="description" content="Cambric AI builds tools that give you visibility and control over AI systems.">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.svg">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+
+<style>
+  /* About page styles */
+  .about-hero {
+    padding: 140px 48px 60px;
+  }
+  .about-hero h1 {
+    max-width: 720px;
+  }
+  .about-hero .hero-sub {
+    font-size: 13px;
+    color: var(--cream2);
+    max-width: 580px;
+    line-height: 1.72;
+    font-weight: 300;
+  }
+
+  .about-section {
+    padding: 64px 48px;
+    border-top: 1px solid var(--border);
+  }
+  .about-section p {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--cream3);
+    line-height: 1.72;
+    max-width: 680px;
+    margin-bottom: 18px;
+  }
+  .about-section p:last-of-type {
+    margin-bottom: 28px;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 680px;
+  }
+  .team-card {
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    padding: 28px;
+    border-radius: 2px;
+  }
+  .team-card .team-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 4px;
+    letter-spacing: .03em;
+  }
+  .team-card .team-role {
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--cream3);
+    letter-spacing: .06em;
+  }
+
+  @media (max-width: 860px) {
+    .about-hero { padding: 120px 24px 48px; }
+    .about-section { padding: 48px 24px; }
+    .team-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
-<body data-page="about">
-  <a class="skip-link" href="#main">Skip to content</a>
+<body>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Cambric AI" height="32" /></a>
-      <nav class="nav" aria-label="Primary">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
-        <ul id="navMenu" class="nav-links">
-          <li class="nav-dropdown">
-            <a href="products.html">Products</a>
-            <div class="nav-dropdown-menu">
-              <a href="products.html">Overview</a>
-              <a href="harpax.html">Harpax</a>
-              <a href="revvit.html">Revvit</a>
-              <a href="quinte.html">Quinte</a>
-              <a href="store.html">Store</a>
-            </div>
-          </li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a class="active" href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Cambric<span> AI</span></a>
+  <div class="nav-links">
+    <a href="harpax.html">Harpax</a>
+    <a href="research.html">Research</a>
+    <a href="https://github.com/nullevent/harpax">Docs</a>
+    <a href="#" class="nav-dl">Download →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="about-hero">
+  <h1>We build tools that show you what your AI is actually doing.</h1>
+  <p class="hero-sub">Cambric AI is a small team focused on one problem: AI coding assistants are powerful, widely adopted, and operate without any meaningful oversight. We're building the tools to change that.</p>
+</section>
+
+<!-- THE PROBLEM WE SAW -->
+<section class="about-section">
+  <div class="section-label">// THE PROBLEM WE SAW</div>
+  <p>AI coding assistants like Claude Code can read any file in your project, execute arbitrary commands, and make network requests — all without an audit trail. Developers trust these tools because they're productive. But trust without visibility is a liability.</p>
+  <p>We saw this gap growing every day. Millions of developers running AI tools that operate unsupervised inside their most sensitive codebases. No logs. No rules. No way to know what actually happened after a session.</p>
+</section>
+
+<!-- WHAT WE BUILT -->
+<section class="about-section">
+  <div class="section-label">// WHAT WE BUILT</div>
+  <p>Harpax is our first product. It monitors every action your AI coding assistant takes and gives you a complete, searchable record of what happened. It can block dangerous actions in real time or run passively and just log. It's open source, self-hosted, and all data stays local.</p>
+  <p>It works today. You can install it in under two minutes.</p>
+  <a href="harpax.html" class="btn-p">Learn about Harpax →</a>
+</section>
+
+<!-- WHAT'S NEXT -->
+<section class="about-section">
+  <div class="section-label">// WHAT'S NEXT</div>
+  <p>We have two more products in development. We're not ready to talk about them yet — we'll ship when they're real, not when they're interesting to pitch.</p>
+  <p>If you're interested in AI governance tooling, or if you're building in this space, we'd like to hear from you.</p>
+  <a href="contact.html" class="btn-g">Get in touch →</a>
+</section>
+
+<!-- TEAM -->
+<section class="about-section">
+  <div class="section-label">// TEAM</div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-name">TEAM_MEMBER_NAME</div>
+      <div class="team-role">ROLE</div>
     </div>
-  </header>
-
-  <div class="page-header">
-    <div class="container">
-      <h1>About Cambric AI</h1>
-      <p class="muted lead">Building the tools organizations need to understand and govern their AI systems.</p>
+    <div class="team-card">
+      <div class="team-name">TEAM_MEMBER_NAME</div>
+      <div class="team-role">ROLE</div>
     </div>
   </div>
+</section>
 
-  <div class="umbra-to-light"></div>
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Cambric AI</a>
+  <div class="footer-links">
+    <a href="harpax.html">Harpax</a>
+    <a href="https://github.com/nullevent/harpax">Docs</a>
+    <a href="research.html">Research</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <span class="footer-note">&copy; 2026 Cambric AI &middot; All session data stays local</span>
+</footer>
 
-  <main id="main" class="light-content">
-    <div class="container section-pad">
-      <div class="grid two">
-        <div>
-          <p>AI systems are becoming central to how organizations operate — but the tooling to monitor, understand, and govern those systems hasn't kept up. Cambric AI exists to close that gap.</p>
-          <p>We build practical, outcome-driven tools: security monitoring that adapts to your environment, operational analytics that surface what matters, and governance infrastructure for the AI systems you rely on.</p>
-          <p>Our team combines experience in AI research, cybersecurity, and enterprise software. We're focused on building the kind of reliable, unglamorous infrastructure that organizations actually need as they adopt AI at scale.</p>
-        </div>
-        <div class="panel glass reveal">
-          <h3>Our principles</h3>
-          <ul class="checklist">
-            <li>Build for outcomes, not demos</li>
-            <li>Security and reliability by default</li>
-            <li>Transparent and auditable systems</li>
-            <li>Research-informed, product-focused</li>
-            <li>Governance that scales with autonomy</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <section class="capabilities section-pad">
-      <div class="container">
-        <div class="cap-grid">
-          <div class="cap-item reveal">
-            <h3>Enterprise DNA</h3>
-            <p>We build for production environments. Our tools are designed for the teams actually running AI systems — not just evaluating them.</p>
-          </div>
-          <div class="cap-item reveal">
-            <h3>Research-Driven</h3>
-            <p>We publish and present at conferences, keeping our products grounded in the latest work in AI safety, behavioral analytics, and neural architectures.</p>
-          </div>
-          <div class="cap-item reveal">
-            <h3>Long-Term Vision</h3>
-            <p>We're building toward the governance infrastructure that autonomous systems will require — starting with the practical tools organizations need today.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <div class="umbra-to-dark"></div>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="brand-row">
-          <img src="assets/logo.svg" alt="" height="24" />
-        </div>
-        <p class="muted" style="font-size:.9rem">Visibility and control for AI systems.</p>
-        <div class="social-links">
-          <a href="#" aria-label="LinkedIn">LinkedIn</a>
-          <a href="#" aria-label="Twitter">X</a>
-          <a href="#" aria-label="GitHub">GitHub</a>
-        </div>
-      </div>
-      <nav aria-label="Footer">
-        <ul class="footer-links">
-          <li><a href="products.html">Products</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="testimonials.html">Testimonials</a></li>
-          <li><a href="store.html">Store</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="footer-meta">
-        <p>&#169; <span id="year"></span> Cambric AI. All rights reserved.</p>
-        <p><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a></p>
-      </div>
-    </div>
-  </footer>
 </body>
 </html>

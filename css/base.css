@@ -1,0 +1,53 @@
+/* ── base.css ── Cambric AI Design System ── */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+:root {
+  --bg:      #0D1020;
+  --bg2:     #111428;
+  --surface: #161930;
+  --border:  #252840;
+  --purple:  #4A3C7A;
+  --purple2: #6050A0;
+  --purple3: #A090C8;
+  --cream:   #DDD9D0;
+  --cream2:  #A8A49C;
+  --cream3:  #6A6878;
+  --green:   #2A5C4A;
+  --green2:  #3A8060;
+  --green3:  #7ABFA0;
+  --warn:    #D07070;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(44px, 6.5vw, 72px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -.01em;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+h1 em {
+  font-style: italic;
+  color: var(--purple3);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@keyframes fadein { to { opacity: 1; } }

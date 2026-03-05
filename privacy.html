@@ -1,98 +1,108 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Privacy — Cambric AI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-  <link href="css/styles.css?v=2" rel="stylesheet" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script defer src="js/logger.js?v=2"></script>
-  <script defer src="js/utils.js?v=2"></script>
-  <script defer src="js/theming.js?v=2"></script>
-  <script defer src="js/main.js?v=2"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Cambric AI</title>
+<meta name="description" content="Cambric AI privacy policy. No tracking, no telemetry, no data collection.">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.svg">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+
+<style>
+  .legal-section {
+    padding: 140px 48px 80px;
+    max-width: 680px;
+  }
+  .legal-section h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(32px, 5vw, 44px);
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .legal-updated {
+    font-size: 9.5px;
+    color: var(--cream3);
+    letter-spacing: .06em;
+    margin-bottom: 40px;
+  }
+  .legal-section h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--cream);
+    margin: 32px 0 10px;
+  }
+  .legal-section p {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--cream3);
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 860px) {
+    .legal-section { padding: 120px 24px 64px; }
+  }
+</style>
 </head>
-<body data-page="privacy">
-  <a class="skip-link" href="#main">Skip to content</a>
+<body>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Cambric AI" height="32" /></a>
-      <nav class="nav" aria-label="Primary">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
-        <ul id="navMenu" class="nav-links">
-          <li class="nav-dropdown">
-            <a href="products.html">Products</a>
-            <div class="nav-dropdown-menu">
-              <a href="products.html">Overview</a>
-              <a href="harpax.html">Harpax</a>
-              <a href="revvit.html">Revvit</a>
-              <a href="quinte.html">Quinte</a>
-              <a href="store.html">Store</a>
-            </div>
-          </li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <div class="page-header">
-    <div class="container">
-      <h1>Privacy Policy</h1>
-    </div>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Cambric<span> AI</span></a>
+  <div class="nav-links">
+    <a href="harpax.html">Harpax</a>
+    <a href="research.html">Research</a>
+    <a href="https://github.com/nullevent/harpax">Docs</a>
+    <a href="#" class="nav-dl">Download →</a>
   </div>
+</nav>
 
-  <div class="umbra-to-light"></div>
+<!-- PRIVACY POLICY -->
+<section class="legal-section">
+  <div class="section-label">// PRIVACY POLICY</div>
 
-  <main id="main" class="light-content legal-content">
-    <div class="container section-pad">
-      <p>Cambric AI ("we," "us") builds tools for AI security, operational analytics, and AI governance. This policy explains how we handle data on this website.</p>
-      <h2>Website</h2>
-      <p>We collect only the information you submit through our contact form (name, email, message). We use it solely to respond to your inquiry.</p>
-      <h2>Data handling</h2>
-      <p>We do not sell, share, or distribute your personal information to third parties. Data submitted through this website is used exclusively for communication purposes.</p>
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:contact@cambricai.io">contact@cambricai.io</a></p>
-      <p>Last updated: <span id="year"></span></p>
-    </div>
-  </main>
+  <h1>Privacy Policy</h1>
+  <div class="legal-updated">Last updated: March 2026</div>
 
-  <div class="umbra-to-dark"></div>
+  <h2>Overview</h2>
+  <p>Cambric AI respects your privacy. This policy covers how we handle data across our website and products.</p>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="brand-row">
-          <img src="assets/logo.svg" alt="" height="24" />
-        </div>
-        <p class="muted" style="font-size:.9rem">Visibility and control for AI systems.</p>
-        <div class="social-links">
-          <a href="#" aria-label="LinkedIn">LinkedIn</a>
-          <a href="#" aria-label="Twitter">X</a>
-          <a href="#" aria-label="GitHub">GitHub</a>
-        </div>
-      </div>
-      <nav aria-label="Footer">
-        <ul class="footer-links">
-          <li><a href="products.html">Products</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="testimonials.html">Testimonials</a></li>
-          <li><a href="store.html">Store</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="footer-meta">
-        <p>&#169; <span id="year"></span> Cambric AI. All rights reserved.</p>
-        <p><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a></p>
-      </div>
-    </div>
-  </footer>
+  <h2>Website</h2>
+  <p>This website collects no personal data. No cookies, no analytics, no tracking scripts.</p>
+
+  <h2>Harpax</h2>
+  <p>Harpax runs entirely locally. All session data is stored in ~/.harpax on your machine. We have no access to your session data, files, or usage patterns. Zero telemetry.</p>
+
+  <h2>Harpax GUI</h2>
+  <p>The paid GUI version processes payments through a third-party provider. We do not store payment details. Your email is used only for license management.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about privacy: contact@cambricai.io</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="footer-logo">Cambric AI</a>
+  <div class="footer-links">
+    <a href="harpax.html">Harpax</a>
+    <a href="https://github.com/nullevent/harpax">Docs</a>
+    <a href="research.html">Research</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <span class="footer-note">&copy; 2026 Cambric AI &middot; All session data stays local</span>
+</footer>
+
 </body>
 </html>
